@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA NGO - Healthcare for Everyone</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=A%20healthcare%20volunteer%20providing%20medical%20assistance%20to%20a%20child%20in%20a%20rural%20setting.%20The%20image%20shows%20a%20bright%2C%20airy%20environment%20with%20medical%20equipment%20visible.%20The%20left%20side%20has%20a%20gradient%20transitioning%20to%20white%20for%20text%20placement.%20The%20overall%20scene%20conveys%20hope%2C%20care%2C%20and%20community%20support%20with%20soft%20natural%20lighting.&width=1920&height=800&seq=12345&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+input:focus {
+outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+background-color: white;
+}
+.custom-checkbox:checked {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.custom-checkbox:checked::after {
+content: "";
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #3b82f6;
+}
+input:checked + .slider:before {
+transform: translateX(24px);
+}
+.gallery-item {
+transition: transform 0.3s ease;
+}
+.gallery-item:hover {
+transform: scale(1.03);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Header Navigation -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="font-['Pacifico'] text-3xl text-primary">NOVA NGO</a>
+<span class="ml-2 text-gray-600 font-medium">Healthcare for Everyone</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<div class="hidden md:flex items-center space-x-8">
+<a href="/home/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="/volunteer_form/Volunteer.html" class="text-gray-700 hover:text-primary transition-colors">Volunteer Form</a>
+<a href="/events_page/events.html" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+<a href="/courses/Courses.html" class="text-gray-700 hover:text-primary transition-colors">Courses</a>
+<div class="relative group inline-block">
+  <a href="#" class="text-gray-700 hover:text-primary transition-colors">Verticals</a>
+  <!-- Dropdown -->
+  <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40 z-10">
+    <a href="/verticals/forest/Forest.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Forest</a>
+    <a href="/verticals/women_empowerment/Womenempowerment.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Women Empowerment</a>
+    <a href="/verticals/health_care/healthcare.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Healthcare</a>
+    <a href="/verticals/education/Education.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Education</a>
+  </div>
+</div>
+
+<a href="/contect/Contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact Us</a>
+</div>
+</nav>
+<div>
+<a href="#donate" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Donate Now</a>
+</div>
+<div class="md:hidden w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section relative">
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent"></div>
+<div class="container mx-auto px-4 py-24 relative z-10">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Making Healthcare Accessible For Everyone</h1>
+<p class="text-lg text-gray-700 mb-8">At NOVA NGO, we believe that good health is the foundation of a better life. Our mission is to provide quality healthcare services to underserved communities, ensuring that everyone has access to the care they deserve.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#programs" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Our Programs</a>
+<a href="#volunteer" class="bg-white text-primary border border-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">Volunteer With Us</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Statistics -->
+<section class="bg-white py-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Impact</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Through dedicated efforts and the support of our partners, we've made significant strides in improving healthcare access across communities.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="bg-gray-50 p-8 rounded-lg text-center shadow-sm">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-heart-pulse-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-4xl font-bold text-gray-900 mb-2">125,000+</h3>
+<p class="text-gray-600">Lives Touched</p>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg text-center shadow-sm">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-community-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-4xl font-bold text-gray-900 mb-2">450+</h3>
+<p class="text-gray-600">Communities Served</p>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg text-center shadow-sm">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-hospital-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-4xl font-bold text-gray-900 mb-2">780</h3>
+<p class="text-gray-600">Health Camps Conducted</p>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg text-center shadow-sm">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-team-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-4xl font-bold text-gray-900 mb-2">2,500+</h3>
+<p class="text-gray-600">Volunteers Engaged</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Programs -->
+<section id="programs" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Programs</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">We offer a range of healthcare initiatives designed to address the specific needs of underserved communities.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20free%20health%20camp%20in%20a%20rural%20setting%20with%20doctors%20providing%20medical%20check-ups%20to%20patients.%20The%20scene%20shows%20medical%20equipment%2C%20examination%20tables%2C%20and%20people%20waiting%20in%20line.%20The%20atmosphere%20is%20bright%20and%20hopeful%20with%20natural%20lighting%20highlighting%20the%20medical%20professionals%20in%20white%20coats%20attending%20to%20patients%20of%20various%20ages.&width=600&height=400&seq=12346&orientation=landscape" alt="Free Health Camps" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Free Health Camps</h3>
+<p class="text-gray-600 mb-4">Regular health camps providing essential medical check-ups, screenings, and treatments. Our team of dedicated professionals ensures quality healthcare reaches every community member.</p>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Monthly Camps</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Multiple Locations</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20healthcare%20professional%20providing%20maternal%20care%20to%20a%20mother%20and%20child%20in%20a%20clean%2C%20bright%20medical%20facility.%20The%20scene%20shows%20a%20nurse%20or%20doctor%20checking%20a%20baby%20while%20the%20mother%20looks%20on%20with%20a%20smile.%20Medical%20equipment%20is%20visible%20in%20the%20background%2C%20and%20the%20atmosphere%20conveys%20care%2C%20tenderness%2C%20and%20professional%20medical%20attention.&width=600&height=400&seq=12347&orientation=landscape" alt="Maternal & Child Care" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Maternal & Child Care</h3>
+<p class="text-gray-600 mb-4">Comprehensive care including prenatal support, postnatal services, nutrition guidance, and immunization programs. We ensure healthy beginnings for mothers and children.</p>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-heart-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Personalized Care Plans</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-baby-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Regular Check-ups</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20mental%20health%20counseling%20session%20in%20a%20warm%2C%20welcoming%20environment.%20The%20scene%20shows%20a%20therapist%20or%20counselor%20speaking%20with%20a%20patient%20in%20a%20comfortable%2C%20private%20setting%20with%20soft%20lighting.%20The%20atmosphere%20conveys%20trust%2C%20support%2C%20and%20professional%20care%20with%20subtle%20elements%20like%20plants%2C%20comfortable%20seating%2C%20and%20calming%20colors.&width=600&height=400&seq=12348&orientation=landscape" alt="Mental Health Support" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Mental Health Support</h3>
+<p class="text-gray-600 mb-4">Professional counseling services and support groups focused on mental wellness. Our programs promote understanding and provide essential emotional support to communities.</p>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mental-health-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Professional Counseling</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-group-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Support Networks</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20health%20education%20workshop%20in%20a%20community%20setting%20with%20a%20healthcare%20professional%20teaching%20a%20diverse%20group%20of%20attentive%20community%20members.%20The%20scene%20shows%20visual%20aids%2C%20educational%20materials%2C%20and%20participants%20engaged%20in%20learning.%20The%20atmosphere%20is%20bright%2C%20interactive%2C%20and%20focused%20on%20knowledge%20sharing%20with%20good%20lighting%20highlighting%20the%20educational%20materials.&width=600&height=400&seq=12349&orientation=landscape" alt="Health Education" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Health Education</h3>
+<p class="text-gray-600 mb-4">Interactive workshops and awareness campaigns focusing on preventive healthcare. We empower communities with knowledge for better health management and lifestyle choices.</p>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-book-open-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Regular Workshops</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-presentation-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-600">Community Training</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Success Stories -->
+<section id="stories" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Success Stories</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Real stories of lives transformed through our healthcare initiatives.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm flex flex-col md:flex-row">
+<img src="https://readdy.ai/api/search-image?query=A%20portrait%20of%20a%20smiling%20elderly%20woman%20with%20gray%20hair%20in%20a%20rural%20setting%20who%20appears%20healthy%20and%20grateful.%20The%20image%20should%20convey%20recovery%20and%20hope%20after%20receiving%20medical%20care.%20The%20lighting%20is%20warm%20and%20natural%2C%20highlighting%20her%20expressive%20face%20showing%20gratitude%20and%20renewed%20health.&width=400&height=400&seq=12350&orientation=portrait" alt="Amara's Story" class="w-full md:w-1/3 h-64 md:h-auto object-cover object-top">
+<div class="p-6 flex-1">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Amara's Story</h3>
+<p class="text-gray-600 mb-4">"I had been suffering from untreated hypertension for years, unaware of the risks. At NOVA's health camp, I was diagnosed and received medication and lifestyle guidance. Now, my blood pressure is under control, and I've learned to manage my health. The regular follow-ups have been a blessing for me and my family."</p>
+<p class="text-sm text-gray-500">Amara Johnson, 67 - Riverdale Community</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm flex flex-col md:flex-row">
+<img src="https://readdy.ai/api/search-image?query=A%20portrait%20of%20a%20young%20mother%20holding%20her%20healthy%20baby%2C%20both%20looking%20happy%20and%20well.%20The%20image%20shows%20them%20in%20a%20simple%20home%20setting%20with%20natural%20light%20streaming%20in.%20The%20mother%20appears%20grateful%20and%20relieved%2C%20while%20the%20baby%20looks%20healthy%20and%20content.%20The%20scene%20conveys%20successful%20maternal%20care%20and%20support.&width=400&height=400&seq=12351&orientation=portrait" alt="Priya's Story" class="w-full md:w-1/3 h-64 md:h-auto object-cover object-top">
+<div class="p-6 flex-1">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Priya's Story</h3>
+<p class="text-gray-600 mb-4">"During my pregnancy, I had no access to proper healthcare until NOVA's maternal care program reached our village. The prenatal care, nutrition support, and safe delivery assistance they provided saved both my life and my baby's. Today, my daughter is healthy and thriving thanks to their continued support."</p>
+<p class="text-sm text-gray-500">Priya Sharma, 28 - Eastwood Village</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Photo Gallery -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Work in Action</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Glimpses of our healthcare initiatives across communities.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20doctor%20examining%20a%20child%20at%20a%20rural%20health%20camp.%20The%20scene%20shows%20medical%20equipment%2C%20a%20caring%20doctor%20in%20a%20white%20coat%2C%20and%20a%20young%20patient%20with%20their%20parent%20nearby.%20The%20setting%20is%20simple%20but%20clean%2C%20with%20natural%20lighting%20highlighting%20the%20medical%20care%20being%20provided.&width=600&height=400&seq=12352&orientation=landscape" alt="Health Camp" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=Healthcare%20workers%20distributing%20medicine%20and%20supplies%20in%20a%20rural%20community.%20The%20scene%20shows%20volunteers%20in%20NOVA%20branded%20shirts%20organizing%20medical%20supplies%20and%20handing%20them%20to%20local%20residents.%20The%20atmosphere%20is%20organized%20and%20helpful%20with%20people%20lined%20up%20to%20receive%20assistance.&width=600&height=400&seq=12353&orientation=landscape" alt="Medicine Distribution" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20health%20education%20workshop%20with%20community%20members%20learning%20about%20hygiene%20practices.%20The%20scene%20shows%20an%20instructor%20using%20visual%20aids%20to%20teach%20handwashing%20and%20sanitation%20to%20a%20group%20of%20attentive%20adults%20and%20children.%20The%20setting%20is%20a%20community%20center%20with%20educational%20posters%20visible.&width=600&height=400&seq=12354&orientation=landscape" alt="Health Education Workshop" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=Healthcare%20volunteers%20conducting%20vision%20screening%20for%20elderly%20patients%20in%20a%20rural%20setting.%20The%20scene%20shows%20medical%20professionals%20using%20eye%20charts%20and%20basic%20equipment%20to%20test%20vision.%20The%20patients%20are%20seated%20comfortably%20while%20receiving%20care%20in%20a%20simple%20but%20clean%20environment.&width=600&height=400&seq=12355&orientation=landscape" alt="Vision Screening" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20mental%20health%20awareness%20session%20with%20a%20counselor%20speaking%20to%20a%20small%20group.%20The%20scene%20shows%20participants%20sitting%20in%20a%20circle%2C%20engaged%20in%20discussion%20about%20mental%20health%20topics.%20The%20atmosphere%20is%20supportive%20and%20open%20with%20natural%20lighting%20creating%20a%20calm%20environment.&width=600&height=400&seq=12356&orientation=landscape" alt="Mental Health Session" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=Nurses%20providing%20immunizations%20to%20children%20in%20a%20village%20setting.%20The%20scene%20shows%20healthcare%20workers%20administering%20vaccines%20while%20parents%20comfort%20their%20children.%20Medical%20supplies%20and%20records%20are%20visible%2C%20and%20the%20setting%20is%20organized%20despite%20being%20in%20a%20rural%20location.&width=600&height=400&seq=12357&orientation=landscape" alt="Immunization Drive" class="w-full h-48 object-cover object-top">
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20team%20of%20medical%20volunteers%20posing%20together%20after%20a%20successful%20health%20camp.%20The%20diverse%20group%20of%20doctors%2C%20nurses%2C%20and%20support%20staff%20are%20wearing%20NOVA%20branded%20shirts%20and%20looking%20tired%20but%20satisfied.%20Medical%20equipment%20is%20visible%20in%20the%20background%20of%20what%20appears%20to%20be%20a%20temporary%20clinic.&width=600&height=400&seq=12358&orientation=landscape" alt="Volunteer Team" class="w-full h-48 object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- Team & Partners -->
+<section id="team" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Team</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Meet the dedicated professionals behind our healthcare initiatives.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm text-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20female%20doctor%20with%20a%20warm%20smile%20wearing%20a%20white%20coat.%20She%20has%20short%20dark%20hair%20and%20appears%20confident%20and%20approachable%20against%20a%20neutral%20background.%20The%20lighting%20is%20professional%20and%20flattering%2C%20highlighting%20her%20friendly%20expression.&width=400&height=400&seq=12360&orientation=portrait" alt="Dr. Sarah Chen" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Sarah Chen</h3>
+<p class="text-primary mb-3">Medical Director</p>
+<p class="text-gray-600 text-sm mb-4">With over 20 years of experience in public health, Dr. Chen leads our medical initiatives with passion and expertise.</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-linkedin-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-twitter-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm text-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20male%20healthcare%20administrator%20with%20a%20confident%20smile%20wearing%20a%20business%20suit.%20He%20has%20short%20gray%20hair%20and%20glasses%2C%20appearing%20professional%20and%20trustworthy%20against%20a%20neutral%20background.%20The%20lighting%20is%20clean%20and%20professional.&width=400&height=400&seq=12361&orientation=portrait" alt="Michael Rodriguez" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">Michael Rodriguez</h3>
+<p class="text-primary mb-3">Executive Director</p>
+<p class="text-gray-600 text-sm mb-4">Michael brings 15 years of nonprofit management experience, ensuring our programs reach those who need them most.</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-linkedin-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-twitter-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm text-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20female%20nurse%20with%20a%20friendly%20smile%20wearing%20scrubs.%20She%20has%20her%20hair%20tied%20back%20and%20appears%20compassionate%20and%20energetic%20against%20a%20neutral%20background.%20The%20lighting%20is%20bright%20and%20professional%2C%20highlighting%20her%20approachable%20demeanor.&width=400&height=400&seq=12362&orientation=portrait" alt="Nurse Olivia Thompson" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">Olivia Thompson</h3>
+<p class="text-primary mb-3">Head Nurse</p>
+<p class="text-gray-600 text-sm mb-4">Olivia coordinates our nursing team and ensures the highest standards of care in all our health camps and clinics.</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-linkedin-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-twitter-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm text-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20male%20community%20outreach%20coordinator%20with%20a%20friendly%20smile%20wearing%20casual%20professional%20attire.%20He%20has%20short%20dark%20hair%20and%20appears%20energetic%20and%20approachable%20against%20a%20neutral%20background.%20The%20lighting%20is%20bright%20and%20natural.&width=400&height=400&seq=12363&orientation=portrait" alt="David Okonkwo" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">David Okonkwo</h3>
+<p class="text-primary mb-3">Community Outreach</p>
+<p class="text-gray-600 text-sm mb-4">David builds relationships with communities, ensuring our programs are accessible and meet local needs.</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-linkedin-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-twitter-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-mail-line text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Partners</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">We collaborate with organizations that share our commitment to improving healthcare access.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="bg-gray-50 p-6 rounded-lg flex flex-col items-center justify-center shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center mb-3">
+<i class="ri-hospital-fill ri-2x text-gray-700"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 text-center">Westside Medical Center</h3>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg flex flex-col items-center justify-center shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center mb-3">
+<i class="ri-medicine-bottle-fill ri-2x text-gray-700"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 text-center">GlobalHealth Pharmaceuticals</h3>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg flex flex-col items-center justify-center shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center mb-3">
+<i class="ri-government-fill ri-2x text-gray-700"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 text-center">Ministry of Public Health</h3>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg flex flex-col items-center justify-center shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center mb-3">
+<i class="ri-global-fill ri-2x text-gray-700"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 text-center">International Health Alliance</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Get Involved -->
+<section id="volunteer" class="py-16 bg-gray-50 relative">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Get Involved</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Join us in our mission to make healthcare accessible for everyone.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-sm p-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-hand-heart-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Volunteer</h3>
+<p class="text-gray-600 mb-6">Join our dedicated team of volunteers making a difference in healthcare. Whether you're a medical professional or want to help with community outreach, your time and skills can transform lives in underserved communities.</p>
+<a href="#" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap inline-block">Join Our Team</a>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-8" id="donate">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-money-dollar-circle-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Donate</h3>
+<p class="text-gray-600 mb-6">Support our mission to provide essential healthcare services to those in need. Your generous contribution helps fund medical camps, equipment, and life-saving treatments for underserved communities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap">$25</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap">$50</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap">$100</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap">Other</button>
+</div>
+<button id="donateNowBtn" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Donate Now</button>
+<div id="donationModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div class="p-6 border-b border-gray-200">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-gray-900">Make a Donation</h3>
+<button id="closeDonationModal" class="text-gray-400 hover:text-gray-500">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="p-6">
+<p class="text-gray-600 mb-6">Your donation helps us provide essential healthcare services to underserved communities. Every contribution makes a difference in someone's life.</p>
+<form id="donationForm">
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Select Amount</label>
+<div class="flex flex-wrap gap-2 mb-3">
+<button type="button" class="donation-amount bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap" data-amount="25">$25</button>
+<button type="button" class="donation-amount bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap" data-amount="50">$50</button>
+<button type="button" class="donation-amount bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap" data-amount="100">$100</button>
+<button type="button" class="donation-amount bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button whitespace-nowrap" data-amount="custom">Other</button>
+</div>
+<div id="customAmountField" class="hidden">
+<input type="number" placeholder="Enter amount" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary mb-2">
+<div class="grid grid-cols-2 gap-2">
+<input type="text" placeholder="City" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<input type="text" placeholder="State" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary">
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<button type="button" class="payment-method flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-bank-card-line"></i>
+</div>
+Credit Card
+</button>
+<button type="button" class="payment-method flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-paypal-line"></i>
+</div>
+PayPal
+</button>
+<button type="button" class="payment-method flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-apple-line"></i>
+</div>
+Apple Pay
+</button>
+</div>
+</div>
+<button type="submit" id="completeDonationBtn" class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition">Complete Donation</button>
+</form>
+</div>
+</div>
+</div>
+<div id="successModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg max-w-md w-full mx-4 transform transition-transform duration-300 scale-95">
+<div class="p-6 text-center">
+<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-check-line ri-2x text-green-500"></i>
+</div>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+<p class="text-gray-600 mb-6">Your generous donation has been received. Together, we're making healthcare accessible for everyone.</p>
+<div class="bg-gray-50 rounded-lg p-4 mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-gray-600">Donation Amount:</span>
+<span id="confirmationAmount" class="font-bold text-gray-900">$0</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-600">Receipt Number:</span>
+<span id="receiptNumber" class="font-mono text-gray-900"></span>
+</div>
+</div>
+<p class="text-sm text-gray-500 mb-6">A confirmation email with your receipt has been sent to your inbox.</p>
+<button id="closeSuccessModal" class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-calendar-event-line ri-xl text-primary"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Organize an Event</h3>
+<p class="text-gray-600 mb-6">Create meaningful impact by organizing health awareness events in your community. We provide resources, guidance, and support to help you host successful healthcare initiatives.</p>
+<a href="#" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap inline-block">Start Planning</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest News -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Latest News</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Stay updated with our recent activities and upcoming events.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20health%20camp%20in%20action%20with%20medical%20professionals%20setting%20up%20equipment%20and%20treating%20patients%20in%20a%20rural%20community%20center.%20The%20scene%20shows%20organized%20medical%20stations%2C%20people%20waiting%20in%20line%2C%20and%20healthcare%20workers%20in%20NOVA%20branded%20shirts.%20The%20atmosphere%20is%20busy%20but%20orderly%20with%20good%20lighting.&width=600&height=400&seq=12364&orientation=landscape" alt="New Health Camp Initiative" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-500">April 20, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">New Health Camp Initiative Launches in Eastern Region</h3>
+<p class="text-gray-600 mb-4">We're expanding our health camp program to reach 15 new communities in the Eastern Region, providing essential healthcare services to over 5,000 people.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20formal%20partnership%20signing%20ceremony%20between%20NOVA%20NGO%20and%20a%20hospital.%20The%20scene%20shows%20representatives%20from%20both%20organizations%20shaking%20hands%20and%20signing%20documents%20at%20a%20table%20with%20logos%20visible.%20Other%20staff%20members%20and%20media%20are%20present%20in%20a%20professional%20indoor%20setting%20with%20good%20lighting.&width=600&height=400&seq=12365&orientation=landscape" alt="Partnership Announcement" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-500">April 15, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">NOVA Partners with Westside Medical Center</h3>
+<p class="text-gray-600 mb-4">We're excited to announce our new partnership with Westside Medical Center, which will help us provide specialized care to patients in need.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+<img src="https://readdy.ai/api/search-image?query=A%20mental%20health%20awareness%20workshop%20with%20a%20diverse%20audience%20listening%20to%20a%20speaker.%20The%20scene%20shows%20a%20presenter%20using%20slides%20about%20mental%20health%20topics%20while%20attendees%20take%20notes.%20The%20setting%20is%20a%20community%20center%20with%20informational%20posters%20visible%20and%20good%20lighting%20highlighting%20the%20educational%20atmosphere.&width=600&height=400&seq=12366&orientation=landscape" alt="Mental Health Workshop" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line text-primary"></i>
+</div>
+<span class="text-sm text-gray-500">April 10, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">Mental Health Awareness Workshop Series Begins</h3>
+<p class="text-gray-600 mb-4">Our new series of mental health workshops aims to break the stigma and provide support to communities facing mental health challenges.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Have questions or want to learn more about our programs? Get in touch with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white rounded-lg shadow-sm p-8">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+<input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Your email">
+</div>
+</div>
+<div class="mb-4">
+<label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Subject">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+<textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Your message"></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Send Message</button>
+</form>
+</div>
+<div>
+<div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Our Locations</h3>
+<div class="h-64 rounded overflow-hidden mb-6">
+<div style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');" class="w-full h-full bg-center bg-cover"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<h4 class="font-bold text-gray-900 mb-2">Main Office</h4>
+<div class="flex items-start mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<span class="text-gray-600">123 Healthcare Ave, Suite 400<br>Riverdale, CA 90210</span>
+</div>
+<div class="flex items-center mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<span class="text-gray-600">(555) 123-4567</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 mb-2">Regional Office</h4>
+<div class="flex items-start mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<span class="text-gray-600">456 Community Blvd<br>Eastwood, CA 90220</span>
+</div>
+<div class="flex items-center mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<span class="text-gray-600">(555) 987-6543</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-8">
+<h3 class="text-xl font-bold text-gray-900 mb-4">Connect With Us</h3>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-facebook-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-twitter-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-instagram-line text-gray-600"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-linkedin-fill text-gray-600"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200">
+<i class="ri-youtube-fill text-gray-600"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="py-16 bg-primary/5">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+<p class="text-gray-600 mb-8">Subscribe to our newsletter to receive updates on our healthcare initiatives, upcoming events, and ways to get involved.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Subscribe</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="font-['Pacifico'] text-3xl text-white mb-4 inline-block">NOVA</a>
+<p class="text-gray-400 mb-6">Making healthcare accessible for everyone, regardless of background or circumstances.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700">
+<i class="ri-twitter-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Programs</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Volunteer Form</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Events</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Courses</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Verticals</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Get Involved</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">Donate</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Volunteer</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Partner With Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Fundraise</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Corporate Sponsorship</a></li>
+</ul>
+</div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-gray-300"></i>
+                            </div>
+                            <span class="text-gray-300">2/4 Mariyamman Koil street Thozhuvanthaangal village vanapuram Taluk kallakurichi Dist pin 605 801
+                                Tamilnadu 
+                                India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line text-gray-300"></i>
+                            </div>
+                            <a href="tel:+18005551234" class="text-gray-300 hover:text-white transition-colors">+91 9787302116</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line text-gray-300"></i>
+                            </div>
+                            <a href="mailto:info@novango.org" class="text-gray-300 hover:text-white transition-colors">infonovangokkr@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 NOVA NGO. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile menu toggle
+const menuButton = document.querySelector('.ri-menu-line');
+if (menuButton) {
+menuButton.addEventListener('click', function() {
+// Mobile menu functionality would go here
+});
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Donation modal functionality
+const donateNowBtn = document.getElementById('donateNowBtn');
+const donationModal = document.getElementById('donationModal');
+const closeDonationModal = document.getElementById('closeDonationModal');
+const customAmountField = document.getElementById('customAmountField');
+if (donateNowBtn && donationModal) {
+donateNowBtn.addEventListener('click', () => {
+donationModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+}
+if (closeDonationModal) {
+closeDonationModal.addEventListener('click', () => {
+donationModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+}
+// Close modal when clicking outside
+donationModal.addEventListener('click', (e) => {
+if (e.target === donationModal) {
+donationModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+// Donation amount buttons
+const donationAmountBtns = document.querySelectorAll('.donation-amount');
+donationAmountBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+donationAmountBtns.forEach(b => {
+b.classList.remove('bg-primary', 'text-white');
+b.classList.add('bg-gray-100', 'hover:bg-gray-200', 'text-gray-800');
+});
+btn.classList.remove('bg-gray-100', 'hover:bg-gray-200', 'text-gray-800');
+btn.classList.add('bg-primary', 'text-white');
+if (btn.dataset.amount === 'custom') {
+customAmountField.classList.remove('hidden');
+} else {
+customAmountField.classList.add('hidden');
+}
+});
+});
+// Payment method buttons
+const paymentMethodBtns = document.querySelectorAll('.payment-method');
+paymentMethodBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+paymentMethodBtns.forEach(b => {
+b.classList.remove('bg-primary', 'text-white', 'border-primary');
+});
+btn.classList.add('bg-primary', 'text-white', 'border-primary');
+});
+});
+// Form submission
+const donationForm = document.getElementById('donationForm');
+const completeDonationBtn = document.getElementById('completeDonationBtn');
+if (donationForm && completeDonationBtn) {
+donationForm.addEventListener('submit', (e) => {
+e.preventDefault();
+const submitButton = document.getElementById('completeDonationBtn');
+submitButton.disabled = true;
+submitButton.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Processing...';
+// Comprehensive form validation
+const requiredFields = donationForm.querySelectorAll('input[required]');
+let isValid = true;
+let errorMessages = [];
+// Check donation amount
+const selectedAmountBtn = document.querySelector('.donation-amount.bg-primary');
+if (!selectedAmountBtn) {
+    errorMessages.push('Please select a donation amount');
+    isValid = false;
+}
+// Check payment method
+const selectedPaymentMethod = document.querySelector('.payment-method.bg-primary');
+if (!selectedPaymentMethod) {
+    errorMessages.push('Please select a payment method');
+    isValid = false;
+}
+// Validate required fields
+requiredFields.forEach(field => {
+    if (!field.value.trim()) {
+        isValid = false;
+        field.classList.add('border-red-500');
+        errorMessages.push(`Please enter your ${field.placeholder || field.id}`);
+    } else {
+        field.classList.remove('border-red-500');
+    }
+    // Email validation
+    if (field.type === 'email' && field.value.trim()) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(field.value.trim())) {
+            isValid = false;
+            field.classList.add('border-red-500');
+            errorMessages.push('Please enter a valid email address');
+        }
+    }
+});
+if (!isValid) {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Complete Donation';
+    
+    // Show error messages
+    const existingErrorDiv = document.getElementById('donationFormErrors');
+    if (existingErrorDiv) {
+        existingErrorDiv.remove();
+    }
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.id = 'donationFormErrors';
+    errorDiv.className = 'mb-4 p-3 bg-red-50 text-red-600 rounded';
+    errorDiv.innerHTML = `
+        <div class="flex items-center mb-2">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-error-warning-line"></i>
+            </div>
+            <span class="font-medium">Please correct the following:</span>
+        </div>
+        <ul class="list-disc list-inside pl-2 text-sm">
+            ${errorMessages.map(msg => `<li>${msg}</li>`).join('')}
+        </ul>
+    `;
+    
+    donationForm.insertBefore(errorDiv, donationForm.firstChild);
+    return;
+}
+// Simulate payment processing
+setTimeout(() => {
+    // Get selected donation amount
+    let donationAmount = '0';
+    const selectedAmountBtn = document.querySelector('.donation-amount.bg-primary');
+    if (selectedAmountBtn) {
+        if (selectedAmountBtn.dataset.amount === 'custom') {
+            donationAmount = document.querySelector('#customAmountField input').value || '0';
+        } else {
+            donationAmount = selectedAmountBtn.dataset.amount;
+        }
+    }
+    // Generate receipt number with timestamp
+    const timestamp = new Date().getTime().toString().slice(-6);
+    const receiptNumber = `RN-${timestamp}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+    // Update confirmation details
+    document.getElementById('confirmationAmount').textContent = `$${donationAmount}`;
+    document.getElementById('receiptNumber').textContent = receiptNumber;
+    // Hide donation modal and show success modal with smooth transition
+    donationModal.classList.add('hidden');
+    const successModal = document.getElementById('successModal');
+    successModal.classList.remove('hidden');
+    
+    // Add transition effect
+    setTimeout(() => {
+        const modalContent = successModal.querySelector('.transform');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+    }, 10);
+    // Reset form and button state
+    submitButton.disabled = false;
+    submitButton.textContent = 'Complete Donation';
+    donationForm.reset();
+    // Remove any error messages
+    const errorDiv = document.getElementById('donationFormErrors');
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+}, 1500); // Simulate processing time
+// Close success modal handler
+document.getElementById('closeSuccessModal').addEventListener('click', () => {
+successModal.classList.add('hidden');
+document.body.style.overflow = '';
+donationForm.reset();
+});
+// Close success modal when clicking outside
+successModal.addEventListener('click', (e) => {
+if (e.target === successModal) {
+successModal.classList.add('hidden');
+document.body.style.overflow = '';
+donationForm.reset();
+}
+});
+});
+}
+});
+</script>
+</body>
+</html>

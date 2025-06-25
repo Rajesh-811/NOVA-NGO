@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA NGO - Empowering Women, Transforming Communities</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#8e44ad',secondary:'#16a085'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0.4) 80%, rgba(255, 255, 255, 0) 100%), url('https://readdy.ai/api/search-image?query=A%20powerful%20and%20inspiring%20image%20of%20diverse%20women%20in%20rural%20settings%20engaged%20in%20empowerment%20activities.%20The%20image%20shows%20women%20of%20different%20ages%20collaborating%2C%20learning%2C%20and%20leading%20in%20community%20workshops.%20The%20left%20side%20has%20a%20clean%20white%20background%20that%20gradually%20transitions%20to%20a%20vibrant%20scene%20on%20the%20right.%20The%20lighting%20is%20warm%20and%20uplifting%2C%20creating%20a%20positive%20atmosphere%20of%20growth%20and%20transformation.&width=1600&height=800&seq=1234&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .counter-box {
+            position: relative;
+            overflow: hidden;
+        }
+        .counter-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(142, 68, 173, 0.05);
+            z-index: -1;
+        }
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card {
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 80px;
+            color: rgba(142, 68, 173, 0.1);
+            font-family: 'Georgia', serif;
+        }
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #8e44ad;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8e44ad;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="checkbox"]:checked::before {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8e44ad;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header Section -->
+    <header class="w-full bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-3xl font-['Pacifico'] text-primary">NOVA NGO</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <div class="hidden md:flex items-center space-x-8">
+                <a href="/home/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                <a href="/volunteer_form/Volunteer.html" class="text-gray-700 hover:text-primary transition-colors">Volunteer Form</a>
+                <a href="/events_page/events.html" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+                <a href="/courses/Courses.html" class="text-gray-700 hover:text-primary transition-colors">Courses</a>
+                <div class="relative group inline-block">
+                  <a href="#" class="text-gray-700 hover:text-primary transition-colors">Verticals</a>
+                  <!-- Dropdown -->
+                  <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40 z-10">
+                    <a href="/verticals/forest/Forest.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Forest</a>
+                    <a href="/verticals/women_empowerment/Womenempowerment.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Women Empowerment</a>
+                    <a href="/verticals/health_care/healthcare.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Healthcare</a>
+                    <a href="/verticals/education/Education.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Education</a>
+                  </div>
+                </div>
+
+                <a href="/contect/Contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact Us</a>
+                </div>
+            </nav>
+            <div class="md:hidden w-10 h-10 flex items-center justify-center">
+                <i class="ri-menu-line ri-lg"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section w-full py-20 md:py-32">
+        <div class="container mx-auto px-6 w-full">
+            <div class="max-w-xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">Empowering Women, Transforming Communities</h1>
+                <p class="text-lg text-gray-700 mb-8">We provide women in rural areas with the tools, skills, and support they need to lead independent, fulfilling lives and create sustainable change.</p>
+                <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition duration-300 shadow-md whitespace-nowrap">Support Our Mission</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-lg shadow-md p-8 border-l-4 border-primary">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
+                <p class="text-gray-700 text-lg">At NOVA NGO, we believe that empowering women is crucial to creating sustainable, thriving communities. We work to break barriers of poverty, discrimination, and limited access to resources by providing education, skills training, and support networks that help women thrive in their personal and professional lives.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="counter-box bg-white rounded-lg p-8 text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-user-heart-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-primary mb-2">15,000+</h3>
+                    <p class="text-gray-700">Women Empowered</p>
+                </div>
+                
+                <div class="counter-box bg-white rounded-lg p-8 text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-map-pin-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-primary mb-2">48</h3>
+                    <p class="text-gray-700">Communities Served</p>
+                </div>
+                
+                <div class="counter-box bg-white rounded-lg p-8 text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-store-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-primary mb-2">750+</h3>
+                    <p class="text-gray-700">Businesses Started</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Programs Section -->
+    <section id="programs" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Core Programs</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer comprehensive programs designed to address the diverse needs of women in rural communities, focusing on economic independence, leadership, and personal growth.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="program-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Women%20in%20a%20rural%20setting%20learning%20vocational%20skills%20like%20sewing%2C%20crafting%2C%20and%20digital%20skills.%20The%20image%20shows%20a%20well-lit%20classroom%20environment%20with%20women%20of%20different%20ages%20engaged%20in%20hands-on%20training.%20The%20instructor%20is%20demonstrating%20techniques%20while%20students%20practice.%20The%20atmosphere%20is%20focused%20and%20collaborative%20with%20simple%2C%20clean%20background.&width=600&height=400&seq=2345&orientation=landscape" alt="Vocational Training" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-tools-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Vocational Training</h3>
+                        <p class="text-gray-600 mb-4">Providing practical skills in tailoring, handicrafts, digital literacy, and sustainable agriculture to create pathways to economic independence.</p>
+                    </div>
+                </div>
+                
+                <div class="program-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Women%20participating%20in%20a%20leadership%20workshop%20in%20a%20rural%20community%20center.%20The%20image%20shows%20diverse%20women%20engaged%20in%20discussion%2C%20problem-solving%20activities%2C%20and%20public%20speaking%20practice.%20Some%20women%20are%20presenting%20ideas%20while%20others%20are%20attentively%20listening%20and%20taking%20notes.%20The%20setting%20has%20natural%20lighting%20with%20a%20simple%2C%20clean%20background.&width=600&height=400&seq=3456&orientation=landscape" alt="Leadership Development" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-team-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Leadership Development</h3>
+                        <p class="text-gray-600 mb-4">Empowering women with confidence, communication skills, and decision-making abilities to become community leaders and advocates.</p>
+                    </div>
+                </div>
+                
+                <div class="program-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Women%20in%20a%20rural%20setting%20participating%20in%20a%20financial%20literacy%20workshop.%20The%20image%20shows%20a%20female%20instructor%20explaining%20budgeting%20concepts%20using%20visual%20aids%20while%20diverse%20women%20of%20different%20ages%20take%20notes%20and%20engage%20in%20discussion.%20Some%20women%20are%20practicing%20calculations%20and%20planning%20on%20paper.%20The%20environment%20is%20simple%20with%20natural%20lighting%20and%20a%20clean%20background.&width=600&height=400&seq=4567&orientation=landscape" alt="Financial Literacy" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-bank-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Financial Literacy</h3>
+                        <p class="text-gray-600 mb-4">Teaching budgeting, saving, and investment strategies to help women manage resources effectively and build financial security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Impact Stories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Real stories from women whose lives have been transformed through our programs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card bg-white rounded-lg shadow-md p-8 relative">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20confident%20middle-aged%20African%20woman%20with%20a%20warm%20smile%20wearing%20colorful%20traditional%20clothing.%20The%20image%20has%20a%20simple%2C%20clean%20background%20that%20highlights%20her%20face.%20The%20lighting%20is%20natural%20and%20flattering%2C%20creating%20a%20genuine%20and%20approachable%20portrait%20with%20excellent%20detail.&width=200&height=200&seq=5678&orientation=squarish" alt="Amara Okafor" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Amara Okafor</h3>
+                            <p class="text-gray-600">Mbale Village, Uganda</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Before joining NOVA's vocational training program, I struggled to provide for my three children. Now, with my tailoring skills, I've opened a small shop that generates steady income. I can pay for my children's education and even save for the future. NOVA didn't just teach me a skill – they gave me independence."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white rounded-lg shadow-md p-8 relative">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20smiling%20South%20Asian%20woman%20in%20her%2030s%20with%20a%20confident%20expression%20wearing%20simple%2C%20elegant%20clothing.%20The%20image%20has%20a%20clean%2C%20neutral%20background%20that%20highlights%20her%20face.%20The%20lighting%20is%20soft%20and%20natural%2C%20creating%20a%20professional%20and%20approachable%20portrait%20with%20good%20detail.&width=200&height=200&seq=6789&orientation=squarish" alt="Priya Sharma" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Priya Sharma</h3>
+                            <p class="text-gray-600">Rajasthan, India</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"The leadership program transformed how I see myself. I used to stay silent during community meetings, but now I confidently speak up about issues affecting women in my village. I've organized a women's cooperative that helps 25 families earn additional income through handicrafts. My voice matters now, and I'm helping other women find theirs."</p>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-8">
+                <div class="flex space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-primary"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get Involved</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join our mission to empower women and transform communities. There are many ways you can contribute to creating positive change.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-primary bg-opacity-5 flex items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center">
+                            <i class="ri-user-heart-line ri-3x text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Volunteer</h3>
+                        <p class="text-gray-600 mb-6">Share your skills and time to support our programs. We need mentors, trainers, and administrative support both remotely and in the field.</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap">Become a Volunteer</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-primary bg-opacity-5 flex items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center">
+                            <i class="ri-heart-line ri-3x text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Donate</h3>
+                        <p class="text-gray-600 mb-6">Your financial support helps us reach more women and expand our programs. Every contribution, no matter the size, makes a difference.</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap">Make a Donation</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-primary bg-opacity-5 flex items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center">
+                            <i class="ri-team-line ri-3x text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Partner With Us</h3>
+                        <p class="text-gray-600 mb-6">Organizations and businesses can collaborate with us on projects, provide resources, or sponsor specific programs.</p>
+                        <button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap">Become a Partner</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Stay Connected</h2>
+                <p class="text-gray-600 mb-8">Subscribe to our newsletter to receive updates on our programs, success stories, and opportunities to get involved.</p>
+                
+                <form class="max-w-md mx-auto">
+                    <div class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email address" class="w-full px-4 py-3 border border-gray-300 rounded-l-button focus:border-primary">
+                            <button type="submit" class="bg-primary text-white px-6 py-3 rounded-r-button font-medium hover:bg-opacity-90 transition duration-300 whitespace-nowrap">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="consent" class="mt-1 mr-3">
+                        <label for="consent" class="text-sm text-gray-600 text-left">I agree to receive email updates from NOVA NGO. We respect your privacy and will never share your information.</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-['Pacifico'] text-white">logo</h3>
+                        <span class="ml-2 text-white font-semibold">NOVA NGO</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">Empowering women to create lasting change in their communities through education, skills development, and support.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition duration-300">
+                            <i class="ri-facebook-fill ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition duration-300">
+                            <i class="ri-twitter-fill ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition duration-300">
+                            <i class="ri-instagram-line ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition duration-300">
+                            <i class="ri-linkedin-fill ri-lg text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Volunteer Form</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Courses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Verticals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Get Involved</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Volunteer Opportunities</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Donate</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Corporate Partnerships</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Fundraise for Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Current Campaigns</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-gray-300"></i>
+                            </div>
+                            <span class="text-gray-300">2/4 Mariyamman Koil street Thozhuvanthaangal village vanapuram Taluk kallakurichi Dist pin 605 801
+                                Tamilnadu 
+                                India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line text-gray-300"></i>
+                            </div>
+                            <a href="tel:+18005551234" class="text-gray-300 hover:text-white transition-colors">+91 9787302116</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line text-gray-300"></i>
+                            </div>
+                            <a href="mailto:info@novango.org" class="text-gray-300 hover:text-white transition-colors">infonovangokkr@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 NOVA NGO. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition duration-300">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition duration-300">Terms of Service</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap justify-center gap-6">
+                    <span class="text-gray-400 text-sm">Supported by:</span>
+                    <div class="flex items-center">
+                        <i class="ri-visa-line ri-lg text-gray-300 mr-2"></i>
+                        <span class="text-gray-300 text-sm">Visa</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="ri-mastercard-line ri-lg text-gray-300 mr-2"></i>
+                        <span class="text-gray-300 text-sm">Mastercard</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="ri-paypal-line ri-lg text-gray-300 mr-2"></i>
+                        <span class="text-gray-300 text-sm">PayPal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle functionality would go here
+        });
+    </script>
+</body>
+</html>

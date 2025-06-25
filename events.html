@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | NOVA NGO</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2e7d32',secondary:'#f57c00'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+}
+.event-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.category-filter.active {
+background-color: #2e7d32;
+color: white;
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+input[type="checkbox"]:checked {
+background-color: #2e7d32;
+border-color: #2e7d32;
+}
+input[type="checkbox"]:checked::after {
+content: "";
+position: absolute;
+top: 0.25rem;
+left: 0.4rem;
+width: 0.3rem;
+height: 0.6rem;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.calendar-day.has-event {
+position: relative;
+}
+.calendar-day.has-event::after {
+content: "";
+position: absolute;
+bottom: 0.25rem;
+left: 50%;
+transform: translateX(-50%);
+width: 0.5rem;
+height: 0.5rem;
+border-radius: 50%;
+}
+.calendar-day.has-forest-event::after {
+background-color: #2e7d32;
+}
+.calendar-day.has-empowerment-event::after {
+background-color: #f57c00;
+}
+.calendar-day.has-healthcare-event::after {
+background-color: #d32f2f;
+}
+.calendar-day.has-education-event::after {
+background-color: #1976d2;
+}
+.calendar-day.has-multiple-events::after {
+background: linear-gradient(45deg, #2e7d32 25%, #f57c00 25%, #f57c00 50%, #d32f2f 50%, #d32f2f 75%, #1976d2 75%);
+}
+.toggle-switch {
+position: relative;
+display: inline-block;
+width: 3.5rem;
+height: 1.75rem;
+}
+.toggle-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.toggle-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 34px;
+}
+.toggle-slider:before {
+position: absolute;
+content: "";
+height: 1.25rem;
+width: 1.25rem;
+left: 0.25rem;
+bottom: 0.25rem;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .toggle-slider {
+background-color: #2e7d32;
+}
+input:checked + .toggle-slider:before {
+transform: translateX(1.75rem);
+}
+.date-picker {
+border: 1px solid #e5e7eb;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+outline: none;
+}
+.date-picker:focus {
+border-color: #2e7d32;
+box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+.event-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 50;
+overflow-y: auto;
+}
+.event-modal.active {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a href="#" class="text-3xl font-['Pacifico'] text-primary">NOVA NGO</a>
+<nav class="hidden md:flex space-x-8">
+<div class="hidden md:flex items-center space-x-8">
+<a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="/Volunteer.html" class="text-gray-700 hover:text-primary transition-colors">Volunteer Form</a>
+<a href="/events.html" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+<a href="/Courses.html" class="text-gray-700 hover:text-primary transition-colors">Courses</a>
+<div class="relative group inline-block">
+  <a href="#" class="text-gray-700 hover:text-primary transition-colors">Verticals</a>
+  <!-- Dropdown -->
+  <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40 z-10">
+    <a href="/verticals/Forest.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Forest</a>
+    <a href="/verticals/Womenempowerment.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Women Empowerment</a>
+    <a href="/verticals/healthcare.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Healthcare</a>
+    <a href="/verticals/Education.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Education</a>
+  </div>
+</div>
+
+<a href="/Contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact Us</a>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="bg-primary text-white px-6 py-2 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Donate Now</button>
+<div class="w-10 h-10 flex items-center justify-center md:hidden">
+<i class="ri-menu-line ri-xl"></i>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[500px] w-full overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=A%20diverse%20group%20of%20volunteers%20planting%20trees%20and%20engaging%20in%20community%20service%20activities%20in%20a%20lush%20green%20environment.%20The%20image%20shows%20people%20of%20different%20ages%20and%20ethnicities%20working%20together%2C%20with%20some%20planting%20saplings%2C%20others%20distributing%20educational%20materials%2C%20and%20some%20providing%20healthcare%20services.%20The%20scene%20is%20bright%20and%20hopeful%20with%20natural%20sunlight%20filtering%20through%20trees%2C%20creating%20a%20warm%2C%20inspiring%20atmosphere%20that%20represents%20community%20service%20and%20environmental%20conservation.&width=1600&height=800&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+<div class="container mx-auto px-4 h-full flex items-center">
+<div class="max-w-2xl text-white relative z-10">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">Join Our Events for Positive Change</h1>
+<p class="text-lg mb-8">Every event we organize creates impact across our four focus areas: Forest, Human Empowerment, Healthcare, and Education. Discover how you can be part of our mission.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Find an Event</button>
+<button class="bg-white text-primary px-6 py-3 rounded-button hover:bg-gray-100 transition whitespace-nowrap">Become a Volunteer</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-12">
+<!-- Event Filtering System -->
+<div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<h2 class="text-2xl font-semibold text-gray-800 mb-4 md:mb-0">Find Events</h2>
+<div class="flex items-center space-x-4">
+<span class="text-gray-600">View:</span>
+<button class="category-filter active px-4 py-2 rounded-full text-sm font-medium !rounded-full whitespace-nowrap">Calendar</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+<button class="category-filter active flex items-center justify-center px-4 py-3 rounded-button border border-gray-200 hover:bg-primary hover:text-white transition whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-plant-line"></i>
+</div>
+<span>Forest</span>
+</button>
+<button class="category-filter flex items-center justify-center px-4 py-3 rounded-button border border-gray-200 hover:bg-primary hover:text-white transition whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-team-line"></i>
+</div>
+<span>Human Empowerment</span>
+</button>
+<button class="category-filter flex items-center justify-center px-4 py-3 rounded-button border border-gray-200 hover:bg-primary hover:text-white transition whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-heart-pulse-line"></i>
+</div>
+<span>Healthcare</span>
+</button>
+<button class="category-filter flex items-center justify-center px-4 py-3 rounded-button border border-gray-200 hover:bg-primary hover:text-white transition whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-book-open-line"></i>
+</div>
+<span>Education</span>
+</button>
+</div>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1">
+<label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+<div class="flex items-center space-x-2">
+<input type="date" class="date-picker flex-1" value="2025-04-27">
+<span class="text-gray-500">to</span>
+<input type="date" class="date-picker flex-1" value="2025-05-27">
+</div>
+</div>
+<div class="flex-1">
+<label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+<div class="relative">
+<input type="text" placeholder="Enter city or region" class="w-full border border-gray-200 rounded-button py-2 px-4 pr-10">
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-map-pin-line"></i>
+</div>
+</div>
+</div>
+<div class="flex items-end">
+<button class="bg-primary text-white px-6 py-2 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Apply Filters</button>
+</div>
+</div>
+</div>
+<!-- Calendar View -->
+<div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+<i class="ri-arrow-left-s-line ri-lg"></i>
+</button>
+<h2 class="text-xl font-semibold">April 2025</h2>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+<i class="ri-arrow-right-s-line ri-lg"></i>
+</button>
+</div>
+<button class="text-primary hover:underline flex items-center">
+<span>Today</span>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-1 mb-2">
+<div class="text-center font-medium text-gray-500 py-2">Sun</div>
+<div class="text-center font-medium text-gray-500 py-2">Mon</div>
+<div class="text-center font-medium text-gray-500 py-2">Tue</div>
+<div class="text-center font-medium text-gray-500 py-2">Wed</div>
+<div class="text-center font-medium text-gray-500 py-2">Thu</div>
+<div class="text-center font-medium text-gray-500 py-2">Fri</div>
+<div class="text-center font-medium text-gray-500 py-2">Sat</div>
+</div>
+<div class="grid grid-cols-7 gap-1">
+<!-- Previous month -->
+<div class="aspect-square p-1 text-center text-gray-400">30</div>
+<div class="aspect-square p-1 text-center text-gray-400">31</div>
+<!-- Current month -->
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">1</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">2</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">3</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">4</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">5</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">6</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">7</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">8</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">9</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">10</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">11</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">12</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer relative group">
+<span class="absolute top-0 left-0 text-xs p-0.5">13</span>
+<div class="w-full h-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<img src="https://readdy.ai/api/search-image?query=A%20community%20tree%20planting%20event%20in%20a%20park%20with%20diverse%20volunteers%20working%20together%20to%20plant%20saplings&width=100&height=100&seq=9&orientation=squarish" class="w-full h-3/4 object-cover rounded-sm" alt="Tree Planting">
+<span class="text-[8px] leading-tight mt-0.5 text-primary font-medium">Tree Planting Day</span>
+</div>
+</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">14</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">15</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer relative group">
+<span class="absolute top-0 left-0 text-xs p-0.5">16</span>
+<div class="w-full h-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<img src="https://readdy.ai/api/search-image?query=Healthcare%20professionals%20providing%20medical%20checkups%20in%20a%20community%20health%20camp&width=100&height=100&seq=10&orientation=squarish" class="w-full h-3/4 object-cover rounded-sm" alt="Healthcare Camp">
+<span class="text-[8px] leading-tight mt-0.5 text-[#d32f2f] font-medium">Healthcare Camp</span>
+</div>
+</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">17</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">18</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">19</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer relative group">
+<span class="absolute top-0 left-0 text-xs p-0.5">20</span>
+<div class="w-full h-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<img src="https://readdy.ai/api/search-image?query=Students%20and%20teachers%20engaged%20in%20after-school%20learning%20activities&width=100&height=100&seq=11&orientation=squarish" class="w-full h-3/4 object-cover rounded-sm" alt="Education Program">
+<span class="text-[8px] leading-tight mt-0.5 text-[#1976d2] font-medium">Learning Program</span>
+</div>
+</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">21</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">22</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">23</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">24</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">25</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">26</div>
+<div class="aspect-square p-1 text-center bg-primary/10 font-bold border border-primary text-primary">27</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer relative group">
+<span class="absolute top-0 left-0 text-xs p-0.5">28</span>
+<div class="w-full h-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<img src="https://readdy.ai/api/search-image?query=Multiple%20community%20service%20activities%20including%20tree%20planting%20and%20healthcare%20checkups&width=100&height=100&seq=12&orientation=squarish" class="w-full h-3/4 object-cover rounded-sm" alt="Multiple Events">
+<span class="text-[8px] leading-tight mt-0.5 text-gray-600 font-medium">Multiple Events</span>
+</div>
+</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">29</div>
+<div class="aspect-square p-1 text-center hover:bg-gray-100 cursor-pointer">30</div>
+<!-- Next month -->
+<div class="aspect-square p-1 text-center text-gray-400">1</div>
+<div class="aspect-square p-1 text-center text-gray-400">2</div>
+<div class="aspect-square p-1 text-center text-gray-400">3</div>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-4">
+<div class="flex items-center">
+<div class="w-3 h-3 rounded-full bg-[#2e7d32] mr-2"></div>
+<span class="text-sm text-gray-600">Forest</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 rounded-full bg-[#f57c00] mr-2"></div>
+<span class="text-sm text-gray-600">Human Empowerment</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 rounded-full bg-[#d32f2f] mr-2"></div>
+<span class="text-sm text-gray-600">Healthcare</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 rounded-full bg-[#1976d2] mr-2"></div>
+<span class="text-sm text-gray-600">Education</span>
+</div>
+</div>
+</div>
+<br><br>
+<!-- Upcoming Events Section -->
+<h2 class="text-2xl font-semibold text-gray-800 mb-6">Upcoming Events</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Event Card 1 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=A%20community%20tree%20planting%20event%20in%20a%20park%20with%20diverse%20volunteers%20working%20together%20to%20plant%20saplings.%20The%20scene%20shows%20people%20of%20all%20ages%20digging%20holes%2C%20placing%20young%20trees%2C%20and%20watering%20newly%20planted%20trees.%20The%20background%20has%20a%20beautiful%20natural%20setting%20with%20existing%20trees%20and%20clear%20blue%20sky.%20The%20atmosphere%20is%20collaborative%20and%20positive%2C%20with%20people%20wearing%20casual%20outdoor%20clothing%20and%20gardening%20gloves.&width=600&height=400&seq=2&orientation=landscape" alt="Tree Planting Day" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#2e7d32] text-white px-3 py-1 rounded-full text-xs font-medium">Forest</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">Community Tree Planting Day</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>April 28, 2025 • 9:00 AM - 1:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Greenwood Park, 123 Nature Ave, Portland</span>
+</div>
+<p class="text-gray-600 mb-4">Join us for a day of reforestation as we plant 500 native trees to restore our local ecosystem. All equipment and refreshments provided.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="1">Register Now</button>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=A%20healthcare%20outreach%20camp%20in%20a%20rural%20community%20setting%20with%20medical%20professionals%20providing%20check-ups%20and%20consultations%20to%20local%20residents.%20The%20scene%20shows%20doctors%20and%20nurses%20at%20different%20stations%20conducting%20health%20screenings%2C%20measuring%20blood%20pressure%2C%20and%20providing%20medical%20advice.%20There%20are%20people%20of%20various%20ages%20waiting%20in%20line%2C%20some%20being%20attended%20to.%20The%20setting%20has%20simple%20medical%20equipment%20and%20supplies%20organized%20neatly%20on%20tables%2C%20with%20informational%20health%20posters%20visible%20in%20the%20background.&width=600&height=400&seq=3&orientation=landscape" alt="Healthcare Camp" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#d32f2f] text-white px-3 py-1 rounded-full text-xs font-medium">Healthcare</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">Rural Healthcare Camp</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>May 5, 2025 • 10:00 AM - 4:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Riverside Community Center, 45 Main St, Oakville</span>
+</div>
+<p class="text-gray-600 mb-4">Free health check-ups, consultations, and medicines for underserved communities. Medical volunteers needed.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="2">Register Now</button>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=A%20skill%20development%20workshop%20in%20a%20bright%2C%20modern%20classroom%20setting%20with%20diverse%20participants%20engaged%20in%20learning%20activities.%20The%20scene%20shows%20a%20facilitator%20at%20the%20front%20using%20visual%20aids%20and%20presentation%20slides%2C%20while%20participants%20sit%20at%20tables%20with%20notebooks%20and%20laptops.%20Some%20people%20are%20working%20in%20small%20groups%2C%20discussing%20and%20collaborating.%20The%20atmosphere%20is%20focused%20yet%20interactive%2C%20with%20educational%20materials%20visible%20on%20tables%20and%20walls.%20The%20room%20has%20good%20natural%20lighting%20and%20a%20professional%20learning%20environment.&width=600&height=400&seq=4&orientation=landscape" alt="Skill Workshop" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#f57c00] text-white px-3 py-1 rounded-full text-xs font-medium">Human Empowerment</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">Digital Skills Workshop</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>May 12, 2025 • 2:00 PM - 5:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Tech Hub, 78 Innovation Drive, Westfield</span>
+</div>
+<p class="text-gray-600 mb-4">Learn essential digital skills for employment. Topics include basic computer literacy, internet safety, and introduction to office applications.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="3">Register Now</button>
+</div>
+</div>
+<!-- Event Card 4 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=An%20educational%20support%20program%20in%20a%20classroom%20with%20volunteer%20teachers%20helping%20children%20with%20their%20studies.%20The%20scene%20shows%20a%20diverse%20group%20of%20children%20aged%208-12%20sitting%20at%20desks%20or%20in%20small%20groups%2C%20engaged%20in%20learning%20activities.%20Volunteer%20teachers%20are%20moving%20between%20groups%2C%20providing%20individual%20attention%20and%20guidance.%20The%20classroom%20has%20educational%20posters%2C%20books%2C%20and%20learning%20materials%20visible.%20Theres%20a%20warm%2C%20supportive%20atmosphere%20with%20children%20raising%20hands%2C%20writing%20in%20notebooks%2C%20and%20actively%20participating%20in%20the%20learning%20process.&width=600&height=400&seq=5&orientation=landscape" alt="Education Program" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#1976d2] text-white px-3 py-1 rounded-full text-xs font-medium">Education</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">After-School Learning Program</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>May 15, 2025 • 3:30 PM - 5:30 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Sunshine Elementary School, 234 Education Blvd, Maplewood</span>
+</div>
+<p class="text-gray-600 mb-4">Volunteer to help underprivileged children with homework, reading, and educational activities. Training provided for all volunteers.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="4">Register Now</button>
+</div>
+</div>
+<!-- Event Card 5 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=An%20environmental%20conservation%20campaign%20in%20a%20coastal%20area%20with%20volunteers%20cleaning%20up%20a%20beach.%20The%20scene%20shows%20people%20of%20different%20ages%20collecting%20plastic%20waste%20and%20debris%20from%20the%20shoreline%2C%20sorting%20recyclables%20into%20different%20bags%2C%20and%20working%20together%20to%20restore%20the%20natural%20beauty%20of%20the%20beach.%20Some%20volunteers%20are%20in%20the%20water%20removing%20waste%20while%20others%20work%20along%20the%20sand.%20There%20are%20information%20stations%20with%20educational%20materials%20about%20marine%20conservation.%20The%20setting%20has%20a%20beautiful%20coastline%20with%20blue%20water%20and%20natural%20vegetation%20in%20the%20background.&width=600&height=400&seq=6&orientation=landscape" alt="Beach Cleanup" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#2e7d32] text-white px-3 py-1 rounded-full text-xs font-medium">Forest</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">Coastal Cleanup Drive</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>May 20, 2025 • 8:00 AM - 12:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Silver Beach, Coastal Highway, Bayview</span>
+</div>
+<p class="text-gray-600 mb-4">Help clean our local beaches and protect marine life. We'll provide gloves, bags, and tools. Bring sunscreen and water bottle.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="5">Register Now</button>
+</div>
+</div>
+<!-- Event Card 6 -->
+<div class="event-card bg-white rounded-lg shadow-sm overflow-hidden transition duration-300">
+<div class="relative h-48">
+<img src="https://readdy.ai/api/search-image?query=A%20leadership%20training%20workshop%20in%20a%20professional%20conference%20setting%20with%20diverse%20participants%20engaged%20in%20team-building%20activities.%20The%20scene%20shows%20a%20facilitator%20leading%20an%20interactive%20session%20with%20participants%20arranged%20in%20a%20semicircle%20or%20small%20groups.%20Some%20people%20are%20participating%20in%20a%20role-playing%20exercise%20while%20others%20are%20taking%20notes%20or%20discussing%20concepts.%20The%20room%20has%20flip%20charts%2C%20presentation%20screens%2C%20and%20workshop%20materials%20visible.%20The%20atmosphere%20is%20professional%20yet%20dynamic%2C%20with%20participants%20wearing%20business%20casual%20attire%20and%20actively%20engaging%20with%20the%20content%20and%20each%20other.&width=600&height=400&seq=7&orientation=landscape" alt="Leadership Training" class="w-full h-full object-cover object-top">
+<div class="absolute top-4 left-4 bg-[#f57c00] text-white px-3 py-1 rounded-full text-xs font-medium">Human Empowerment</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-semibold mb-2">Youth Leadership Summit</h3>
+<div class="flex items-center text-gray-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>May 28, 2025 • 9:00 AM - 4:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Community Leadership Center, 56 Empowerment St, Springfield</span>
+</div>
+<p class="text-gray-600 mb-4">A full-day workshop for young adults (16-24) to develop leadership skills, confidence, and community project planning abilities.</p>
+<button class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap event-details-btn" data-event-id="6">Register Now</button>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-10">
+<button class="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-button hover:bg-gray-50 transition whitespace-nowrap">Load More Events</button>
+</div>
+</main>
+<!-- Volunteer CTA Section -->
+<section class="bg-primary/5 py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">Become a Volunteer</h2>
+<p class="text-lg text-gray-600 mb-8">Join our community of change-makers and help us create a better world. Whether you have a few hours or can commit regularly, your contribution matters.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+<i class="ri-calendar-check-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Flexible Schedule</h3>
+<p class="text-gray-600">Volunteer when it works for you. One-time events or regular commitments.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+<i class="ri-user-heart-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Make an Impact</h3>
+<p class="text-gray-600">Your time directly helps communities and environments in need.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+<i class="ri-team-line ri-xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Join Our Community</h3>
+<p class="text-gray-600">Meet like-minded people and build meaningful connections.</p>
+</div>
+</div>
+<button class="bg-primary text-white px-8 py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Apply to Volunteer</button>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="bg-white py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto bg-primary/5 p-8 rounded-lg">
+<div class="text-center mb-6">
+<h2 class="text-2xl font-bold text-gray-800 mb-2">Stay Updated on Our Events</h2>
+<p class="text-gray-600">Subscribe to our newsletter to receive event updates, impact stories, and volunteer opportunities.</p>
+</div>
+<form class="flex flex-col md:flex-row gap-3">
+<input type="email" placeholder="Your email address" id="email_sub_body" class="flex-1 border border-gray-300 rounded-button py-3 px-4">
+<button type="submit" id="subscribe_body" class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Subscribe</button>
+</form>
+<p class="text-sm text-gray-500 mt-4 text-center">We respect your privacy and will never share your information.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="text-2xl font-['Pacifico'] mb-4">logo</h3>
+<p class="text-gray-300 mb-4">Building a greener, healthier, and more empowered society through community action and sustainable initiatives.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Volunteer Form</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Events</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Courses</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Verticals</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Focus Areas</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-300 hover:text-white">Forest Conservation</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Human Empowerment</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Healthcare Access</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Education Support</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Impact Reports</a></li>
+</ul>
+</div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-gray-300"></i>
+                            </div>
+                            <span class="text-gray-300">2/4 Mariyamman Koil street Thozhuvanthaangal village vanapuram Taluk kallakurichi Dist pin 605 801
+                                Tamilnadu 
+                                India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line text-gray-300"></i>
+                            </div>
+                            <a href="tel:+18005551234" class="text-gray-300 hover:text-white transition-colors">+91 9787302116</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line text-gray-300"></i>
+                            </div>
+                            <a href="mailto:info@novango.org" class="text-gray-300 hover:text-white transition-colors">infonovangokkr@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+</div>
+<div class="pt-6 border-t border-gray-700 text-center">
+<p class="text-gray-400 text-sm">© 2025 NOVA NGO. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Event Details Modal -->
+<div class="event-modal" id="eventModal">
+<div class="bg-white rounded-lg max-w-3xl w-full mx-4 overflow-hidden">
+<div class="relative h-64">
+<img src="https://readdy.ai/api/search-image?query=A%20community%20tree%20planting%20event%20in%20a%20park%20with%20diverse%20volunteers%20working%20together%20to%20plant%20saplings.%20The%20scene%20shows%20people%20of%20all%20ages%20digging%20holes%2C%20placing%20young%20trees%2C%20and%20watering%20newly%20planted%20trees.%20The%20background%20has%20a%20beautiful%20natural%20setting%20with%20existing%20trees%20and%20clear%20blue%20sky.%20The%20atmosphere%20is%20collaborative%20and%20positive%2C%20with%20people%20wearing%20casual%20outdoor%20clothing%20and%20gardening%20gloves.&width=800&height=400&seq=8&orientation=landscape" alt="Event Image" class="w-full h-full object-cover object-top" id="modalImage">
+<button class="absolute top-4 right-4 bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70" id="closeModal">
+<i class="ri-close-line ri-lg"></i>
+</button>
+<div class="absolute top-4 left-4 bg-[#2e7d32] text-white px-3 py-1 rounded-full text-xs font-medium" id="modalCategory">Forest</div>
+</div>
+<div class="p-6">
+<h2 class="text-2xl font-bold mb-4" id="modalTitle">Community Tree Planting Day</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<div class="flex items-center text-gray-600 mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span id="modalDate">April 28, 2025</span>
+</div>
+<div class="flex items-center text-gray-600 mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span id="modalTime">9:00 AM - 1:00 PM</span>
+</div>
+<div class="flex items-center text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span id="modalLocation">Greenwood Park, 123 Nature Ave, Portland</span>
+</div>
+</div>
+<div class="h-32 bg-gray-100 rounded-lg overflow-hidden">
+<div style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;" class="w-full h-full"></div>
+</div>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-semibold mb-2">About This Event</h3>
+<p class="text-gray-600 mb-4" id="modalDescription">Join us for a day of reforestation as we plant 500 native trees to restore our local ecosystem. This event is suitable for all ages and experience levels. We'll provide all necessary equipment, training, and refreshments. Come dressed for outdoor work and weather conditions.</p>
+<p class="text-gray-600">Your participation helps combat climate change, restore wildlife habitats, prevent soil erosion, and beautify our community spaces.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<h3 class="text-lg font-semibold mb-2">What to Bring</h3>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Comfortable clothes that can get dirty</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Sturdy closed-toe shoes</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Water bottle</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Sunscreen and hat</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Work gloves (if you have them)</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-2">We'll Provide</h3>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Tree saplings and planting materials</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Shovels, gloves, and tools</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Training and guidance</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Light refreshments and water</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Participation certificates</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4">
+<button class="flex-1 bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Register Now</button>
+<button class="flex-1 bg-white border border-gray-300 text-gray-700 py-3 rounded-button hover:bg-gray-50 transition whitespace-nowrap">Volunteer</button>
+<button class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-share-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Category filter buttons
+const categoryButtons = document.querySelectorAll('.category-filter');
+categoryButtons.forEach(button => {
+button.addEventListener('click', function() {
+if (this.parentElement.querySelector('.active')) {
+this.parentElement.querySelector('.active').classList.remove('active');
+}
+this.classList.add('active');
+});
+});
+// Event modal functionality
+const modal = document.getElementById('eventModal');
+const closeModalBtn = document.getElementById('closeModal');
+const eventDetailsBtns = document.querySelectorAll('.event-details-btn');
+eventDetailsBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+const eventId = this.getAttribute('data-event-id');
+// Here you would typically fetch event details based on the ID
+// For now, we'll just show the modal with existing content
+modal.classList.add('active');
+document.body.style.overflow = 'hidden';
+});
+});
+closeModalBtn.addEventListener('click', function() {
+modal.classList.remove('active');
+document.body.style.overflow = 'auto';
+});
+// Close modal when clicking outside of content
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+});
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="email.js"></script>
+<script>
+    emailjs.init("QLRPbyhmUi9Qzw8sf"); // Replace with your EmailJS public key
+</script>
+</body>
+</html>

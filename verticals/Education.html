@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA NGO - Education for All</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F7CAC',secondary:'#8CC9BA'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=A%20bright%2C%20inspiring%20educational%20scene%20with%20natural%20light%20streaming%20through%20windows%2C%20illuminating%20a%20modern%20classroom%20with%20diverse%20students%20engaged%20in%20learning%20activities.%20The%20left%20side%20has%20a%20smooth%20gradient%20transition%20to%20a%20clean%2C%20light%20background%20perfect%20for%20text%20overlay.%20The%20image%20conveys%20hope%2C%20opportunity%2C%20and%20the%20transformative%20power%20of%20education%20in%20rural%20communities.%20The%20composition%20ensures%20text%20on%20the%20left%20will%20be%20highly%20readable%20against%20the%20light%20background.&width=1920&height=800&seq=1234&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.custom-checkbox {
+position: relative;
+padding-left: 2rem;
+cursor: pointer;
+user-select: none;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #cbd5e1;
+border-radius: 4px;
+}
+.custom-checkbox:hover input ~ .checkmark {
+border-color: #4F7CAC;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #4F7CAC;
+border-color: #4F7CAC;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e2e8f0;
+transition: .4s;
+border-radius: 24px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #4F7CAC;
+}
+input:checked + .switch-slider:before {
+transform: translateX(24px);
+}
+.range-slider {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+border-radius: 5px;
+background: #e2e8f0;
+outline: none;
+}
+.range-slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #4F7CAC;
+cursor: pointer;
+}
+.range-slider::-moz-range-thumb {
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #4F7CAC;
+cursor: pointer;
+border: none;
+}
+.impact-map {
+background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header & Navigation -->
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<div class="flex items-center">
+<h1 class="text-3xl font-['Pacifico'] text-primary mr-2">NOVA</h1>
+<span class="text-lg font-semibold">NGO</span>
+</div>
+<nav class="hidden lg:flex space-x-8">
+<div class="hidden md:flex items-center space-x-8">
+<a href="/home/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="/volunteer_form/Volunteer.html" class="text-gray-700 hover:text-primary transition-colors">Volunteer Form</a>
+<a href="/events_page/events.html" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+<a href="/courses/Courses.html" class="text-gray-700 hover:text-primary transition-colors">Courses</a>
+<div class="relative group inline-block">
+  <a href="#" class="text-gray-700 hover:text-primary transition-colors">Verticals</a>
+  <!-- Dropdown -->
+  <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40 z-10">
+    <a href="/verticals/forest/Forest.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Forest</a>
+    <a href="/verticals/women_empowerment/Womenempowerment.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Women Empowerment</a>
+    <a href="/verticals/health_care/healthcare.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Healthcare</a>
+    <a href="/verticals/education/Education.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Education</a>
+  </div>
+</div>
+
+<a href="/contect/Contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact Us</a>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<button class="flex items-center text-gray-700 hover:text-primary">
+<span>EN</span>
+<div class="w-4 h-4 flex items-center justify-center ml-1">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Donate Now</button>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section relative">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+<div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+<div class="w-full md:w-1/2 lg:w-2/5">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Education for All</h1>
+<p class="text-lg md:text-xl text-gray-700 mb-8">We believe that education is the key to unlocking a brighter future. Our initiatives focus on providing access to quality learning for everyone, regardless of their background or location.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white px-6 py-3 rounded-button whitespace-nowrap hover:bg-opacity-90 transition text-lg font-medium">Our Programs</button>
+<button class="bg-white text-primary border-2 border-primary px-6 py-3 rounded-button whitespace-nowrap hover:bg-gray-50 transition text-lg font-medium">Get Involved</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Overview -->
+<section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<span class="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary font-medium mb-4">Our Purpose</span>
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">Transforming Lives Through <span class="text-primary">Education</span></h2>
+<p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">At NOVA NGO, we believe in the transformative power of education. Our mission is to create inclusive learning environments where every child, regardless of their background, can discover their potential and build a brighter future.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+<div class="absolute inset-0 bg-primary/5 transform -skew-y-6 rounded-3xl hidden lg:block"></div>
+<!-- Focus Area 1 -->
+<div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative z-10 border border-gray-100">
+<div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6">
+<i class="ri-book-open-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Education Access</h3>
+<p class="text-gray-700 mb-6 leading-relaxed">Providing comprehensive resources and support to ensure high-quality education reaches remote and underserved communities worldwide.</p>
+<a href="#" class="inline-flex items-center text-primary font-semibold group">
+</a>
+</div>
+<!-- Focus Area 2 -->
+<div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative z-10 border border-gray-100">
+<div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-6 transform rotate-6">
+<i class="ri-group-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Inclusive Learning</h3>
+<p class="text-gray-700 mb-6 leading-relaxed">Creating welcoming educational environments that embrace students of all abilities, backgrounds, and unique learning styles.</p>
+<a href="#" class="inline-flex items-center text-primary font-semibold group">
+</a>
+</div>
+<!-- Focus Area 3 -->
+<div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative z-10 border border-gray-100">
+<div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6">
+<i class="ri-home-heart-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Rural Community Development</h3>
+<p class="text-gray-700 mb-6 leading-relaxed">Empowering rural communities through comprehensive education programs, infrastructure support, and sustainable development initiatives.</p>
+<a href="#" class="inline-flex items-center text-primary font-semibold group">
+</a>
+</div>
+<!-- Focus Area 4 -->
+<div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative z-10 border border-gray-100">
+<div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-6 transform rotate-6">
+<i class="ri-women-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Gender Equality in Education</h3>
+<p class="text-gray-700 mb-6 leading-relaxed">Championing equal access to education for all genders and actively removing barriers that prevent girls from pursuing their educational dreams.</p>
+<a href="#" class="inline-flex items-center text-primary font-semibold group">
+</a>
+</div>
+</div>
+<!-- Statistics -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 relative z-10">
+<div class="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-100">
+<h3 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">125+</h3>
+<p class="text-gray-700 font-medium text-lg">Schools Supported</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-4"></div>
+</div>
+<div class="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-100">
+<h3 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">15,000+</h3>
+<p class="text-gray-700 font-medium text-lg">Students Reached</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-4"></div>
+</div>
+<div class="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-100">
+<h3 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">42</h3>
+<p class="text-gray-700 font-medium text-lg">Rural Communities</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-4"></div>
+</div>
+<div class="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-100">
+<h3 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">87%</h3>
+<p class="text-gray-700 font-medium text-lg">Graduation Rate</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-4"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Programs Showcase -->
+<section class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Programs</h2>
+<p class="text-lg text-gray-700 max-w-3xl mx-auto">Through our diverse range of educational initiatives, we're working to create lasting change in communities around the world.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Program 1 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20diverse%20group%20of%20happy%20students%20receiving%20scholarship%20certificates%20in%20a%20bright%2C%20modern%20classroom%20setting.%20The%20image%20shows%20both%20boys%20and%20girls%20from%20different%20backgrounds%2C%20celebrating%20educational%20achievement%20with%20teachers%20and%20mentors.%20The%20scene%20conveys%20hope%2C%20opportunity%20and%20academic%20success%20in%20a%20supportive%20learning%20environment.&width=600&height=400&seq=2345&orientation=landscape" alt="Scholarship Programs" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Scholarship Programs</h3>
+<p class="text-gray-700 mb-4">Providing financial support to talented students from disadvantaged backgrounds to pursue their education dreams.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Ongoing</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Ages 12-22</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Apply Now</button>
+</div>
+</div>
+<!-- Program 2 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20newly%20renovated%20rural%20school%20building%20with%20improved%20infrastructure%20including%20bright%20classrooms%2C%20a%20small%20library%2C%20and%20clean%20water%20facilities.%20Students%20and%20teachers%20are%20seen%20using%20the%20new%20facilities%20with%20joy.%20The%20image%20shows%20the%20transformation%20of%20educational%20infrastructure%20in%20a%20remote%20community%20setting%20with%20natural%20lighting%20and%20a%20welcoming%20atmosphere.&width=600&height=400&seq=3456&orientation=landscape" alt="School Infrastructure Support" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">School Infrastructure Support</h3>
+<p class="text-gray-700 mb-4">Improving school facilities in rural areas with classrooms, libraries, water systems, and sanitation facilities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Long-term</span>
+<span class="bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded">Rural Communities</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Learn More</button>
+</div>
+</div>
+<!-- Program 3 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20diverse%20group%20of%20students%20and%20adults%20engaged%20in%20a%20digital%20literacy%20workshop%20in%20a%20community%20center.%20The%20scene%20shows%20people%20of%20various%20ages%20learning%20to%20use%20computers%20and%20tablets%20with%20instructors%20providing%20guidance.%20The%20atmosphere%20is%20collaborative%20and%20focused%2C%20with%20modern%20technology%20being%20used%20in%20a%20warm%2C%20welcoming%20environment%20that%20bridges%20the%20digital%20divide%20in%20rural%20communities.&width=600&height=400&seq=4567&orientation=landscape" alt="Digital Literacy Programs" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Digital Literacy Programs</h3>
+<p class="text-gray-700 mb-4">Equipping students and communities with essential digital skills for the modern world and future opportunities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">12-week courses</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">All ages</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Register</button>
+</div>
+</div>
+<!-- Program 4 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20warm%2C%20supportive%20adult%20education%20class%20in%20a%20community%20setting%20where%20older%20learners%20of%20diverse%20backgrounds%20are%20engaged%20in%20reading%20and%20writing%20activities.%20The%20classroom%20has%20a%20comfortable%2C%20inclusive%20atmosphere%20with%20good%20lighting%20and%20educational%20materials.%20Students%20are%20actively%20participating%2C%20showing%20determination%20and%20joy%20in%20their%20learning%20journey%20despite%20starting%20education%20later%20in%20life.&width=600&height=400&seq=5678&orientation=landscape" alt="Adult Education" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Adult Education</h3>
+<p class="text-gray-700 mb-4">Providing literacy, numeracy, and vocational training for adults who missed formal education opportunities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Evening Classes</span>
+<span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Adults 18+</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Join Program</button>
+</div>
+</div>
+<!-- Program 5 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20dynamic%20skill%20development%20workshop%20where%20young%20adults%20are%20learning%20practical%20crafts%20and%20trades%20in%20a%20well-equipped%20training%20center.%20The%20scene%20shows%20participants%20engaged%20in%20hands-on%20activities%20like%20carpentry%2C%20sewing%2C%20or%20electronics%20with%20professional%20instructors%20providing%20guidance.%20The%20workshop%20space%20is%20bright%2C%20organized%20with%20proper%20tools%20and%20materials%2C%20creating%20an%20atmosphere%20of%20productive%20learning%20and%20skill%20acquisition.&width=600&height=400&seq=6789&orientation=landscape" alt="Skill Development Workshops" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Skill Development Workshops</h3>
+<p class="text-gray-700 mb-4">Practical training in marketable skills like carpentry, sewing, electronics, and entrepreneurship.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Monthly Workshops</span>
+<span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded">Youth & Adults</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">View Schedule</button>
+</div>
+</div>
+<!-- Program 6 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20teacher%20training%20session%20in%20a%20bright%2C%20modern%20classroom%20where%20experienced%20educators%20are%20sharing%20innovative%20teaching%20methods%20with%20a%20diverse%20group%20of%20teachers.%20The%20atmosphere%20is%20collaborative%20and%20engaging%2C%20with%20participants%20actively%20discussing%20educational%20strategies%2C%20using%20modern%20teaching%20aids%20and%20technology.%20The%20setting%20conveys%20professional%20development%20in%20education%20with%20a%20focus%20on%20improving%20teaching%20quality%20in%20rural%20schools.&width=600&height=400&seq=7890&orientation=landscape" alt="Teacher Training Programs" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Teacher Training Programs</h3>
+<p class="text-gray-700 mb-4">Enhancing teaching quality through professional development, modern methodologies, and resources.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded">Quarterly</span>
+<span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Educators</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Apply Now</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<button class="bg-white text-primary border-2 border-primary px-6 py-3 rounded-button whitespace-nowrap hover:bg-gray-50 transition text-lg font-medium">View All Programs</button>
+</div>
+</div>
+</section>
+<!-- Impact Section -->
+<section class="py-16 md:py-24 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<!-- Impact Statistics -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<!-- Impact Card 1 -->
+<div class="bg-white rounded-xl p-8 transform hover:scale-105 transition-all duration-300 shadow-lg group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+<i class="ri-user-heart-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-4xl font-bold text-gray-900 mb-2">15,427</h4>
+<p class="text-gray-600">Students Supported</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mt-4"></div>
+</div>
+</div>
+<!-- Impact Card 2 -->
+<div class="bg-white rounded-xl p-8 transform hover:scale-105 transition-all duration-300 shadow-lg group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative">
+<div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+<i class="ri-building-2-line ri-2x text-secondary"></i>
+</div>
+<h4 class="text-4xl font-bold text-gray-900 mb-2">127</h4>
+<p class="text-gray-600">Schools Reached</p>
+<div class="w-12 h-1 bg-gradient-to-r from-secondary to-primary rounded-full mt-4"></div>
+</div>
+</div>
+<!-- Impact Card 3 -->
+<div class="bg-white rounded-xl p-8 transform hover:scale-105 transition-all duration-300 shadow-lg group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+<i class="ri-community-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-4xl font-bold text-gray-900 mb-2">42</h4>
+<p class="text-gray-600">Communities Impacted</p>
+<div class="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mt-4"></div>
+</div>
+</div>
+<!-- Impact Card 4 -->
+<div class="bg-white rounded-xl p-8 transform hover:scale-105 transition-all duration-300 shadow-lg group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative">
+<div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+<i class="ri-graduation-cap-line ri-2x text-secondary"></i>
+</div>
+<h4 class="text-4xl font-bold text-gray-900 mb-2">87%</h4>
+<p class="text-gray-600">Graduation Rate</p>
+<div class="w-12 h-1 bg-gradient-to-r from-secondary to-primary rounded-full mt-4"></div>
+</div>
+</div>
+</div>
+<!-- Success Stories -->
+<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Success Stories</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Story 1 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20confident%20young%20female%20student%20in%20a%20rural%20school%20setting%2C%20smiling%20proudly%20while%20holding%20educational%20books%20or%20certificates.%20She%20is%20wearing%20a%20school%20uniform%20in%20a%20classroom%20environment%20that%20shows%20improvement%20from%20basic%20to%20well-equipped.%20The%20image%20conveys%20personal%20transformation%20through%20education%2C%20hope%2C%20and%20achievement%20against%20the%20odds%20in%20a%20developing%20community.&width=600&height=400&seq=8901&orientation=portrait" alt="Student Success Story" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h4 class="text-lg font-semibold text-gray-900 mb-2">Amara's Journey to University</h4>
+<p class="text-gray-700 mb-4">"The scholarship program changed my life. As the first in my family to attend university, I'm now studying medicine to serve my community."</p>
+<p class="text-sm text-gray-500">- Amara Okafor, Scholarship Recipient</p>
+</div>
+</div>
+<!-- Story 2 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20dedicated%20teacher%20in%20a%20rural%20classroom%20setting%2C%20engaged%20with%20a%20diverse%20group%20of%20attentive%20students.%20The%20classroom%20shows%20improvements%20from%20basic%20to%20well-equipped%20with%20educational%20materials.%20The%20teacher%20appears%20passionate%20and%20committed%2C%20demonstrating%20innovative%20teaching%20methods%20in%20a%20bright%2C%20positive%20learning%20environment%20that%20inspires%20students%20in%20a%20developing%20community.&width=600&height=400&seq=9012&orientation=portrait" alt="Teacher Experience" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h4 class="text-lg font-semibold text-gray-900 mb-2">Transforming Teaching Methods</h4>
+<p class="text-gray-700 mb-4">"The training program gave me new tools to engage students. Now my classroom is interactive, and student performance has improved dramatically."</p>
+<p class="text-sm text-gray-500">- Michael Kimani, Teacher</p>
+</div>
+</div>
+<!-- Story 3 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20transformed%20rural%20community%20with%20a%20new%20school%20building%20as%20its%20centerpiece%2C%20surrounded%20by%20community%20members%20engaged%20in%20educational%20and%20development%20activities.%20The%20scene%20shows%20visible%20improvement%20in%20infrastructure%2C%20with%20children%20and%20adults%20participating%20in%20community%20learning.%20The%20atmosphere%20conveys%20collective%20progress%2C%20hope%20and%20the%20positive%20ripple%20effects%20of%20educational%20investment%20in%20rural%20development.&width=600&height=400&seq=1023&orientation=portrait" alt="Community Impact" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h4 class="text-lg font-semibold text-gray-900 mb-2">A Village Transformed</h4>
+<p class="text-gray-700 mb-4">"Since the school was renovated and expanded, our entire community has changed. Children stay in school longer, and families are more hopeful about the future."</p>
+<p class="text-sm text-gray-500">- Elena Mbeki, Community Leader</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Resource Center -->
+<section class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Gallery</h2>
+<p class="text-lg text-gray-700 max-w-3xl mx-auto">Explore our impact through moments captured across our educational initiatives.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<!-- Gallery Item 1 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20bright%2C%20modern%20classroom%20filled%20with%20engaged%20students%20participating%20in%20interactive%20learning%20activities.%20The%20scene%20shows%20diverse%20students%20collaborating%20on%20projects%20with%20modern%20educational%20technology%2C%20natural%20lighting%2C%20and%20colorful%20educational%20materials%20on%20the%20walls%20creating%20an%20inspiring%20learning%20environment.&width=800&height=600&seq=1001&orientation=landscape" alt="Interactive Learning" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Interactive Learning</h3>
+<p class="text-gray-200 text-sm">Students engaging in modern educational activities</p>
+</div>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20heartwarming%20graduation%20ceremony%20scene%20in%20a%20rural%20community%20school%2C%20showing%20proud%20students%20in%20graduation%20attire%20receiving%20certificates.%20The%20atmosphere%20captures%20joy%20and%20achievement%2C%20with%20families%20and%20teachers%20celebrating%20together%20in%20a%20decorated%20outdoor%20setting%20with%20natural%20lighting.&width=800&height=600&seq=1002&orientation=landscape" alt="Graduation Ceremony" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Graduation Day</h3>
+<p class="text-gray-200 text-sm">Celebrating educational milestones</p>
+</div>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20group%20of%20enthusiastic%20teachers%20participating%20in%20a%20professional%20development%20workshop%2C%20sharing%20innovative%20teaching%20methods.%20The%20scene%20shows%20educators%20collaborating%2C%20using%20modern%20teaching%20tools%2C%20and%20engaging%20in%20hands-on%20learning%20activities%20in%20a%20well-equipped%20training%20room%20with%20natural%20lighting.&width=800&height=600&seq=1003&orientation=landscape" alt="Teacher Training" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Teacher Development</h3>
+<p class="text-gray-200 text-sm">Professional growth workshops for educators</p>
+</div>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20vibrant%20scene%20of%20students%20engaged%20in%20digital%20literacy%20training%2C%20using%20computers%20and%20tablets%20in%20a%20modern%20computer%20lab.%20The%20image%20shows%20diverse%20learners%20of%20different%20ages%20mastering%20technology%20skills%20with%20dedicated%20instructors%20in%20a%20well-equipped%2C%20brightly%20lit%20learning%20space.&width=800&height=600&seq=1004&orientation=landscape" alt="Digital Skills" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Digital Skills Training</h3>
+<p class="text-gray-200 text-sm">Bridging the digital divide</p>
+</div>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20community%20gathering%20showing%20parents%20and%20local%20leaders%20actively%20participating%20in%20an%20educational%20outreach%20program.%20The%20scene%20captures%20community%20engagement%2C%20with%20people%20of%20different%20ages%20discussing%20and%20planning%20educational%20initiatives%20in%20a%20welcoming%20community%20center%20with%20natural%20lighting.&width=800&height=600&seq=1005&orientation=landscape" alt="Community Engagement" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Community Engagement</h3>
+<p class="text-gray-200 text-sm">Building stronger educational communities</p>
+</div>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+<img src="https://readdy.ai/api/search-image?query=A%20newly%20renovated%20school%20building%20with%20modern%20facilities%2C%20showing%20transformed%20learning%20spaces.%20The%20image%20captures%20bright%20classrooms%2C%20a%20library%2C%20and%20outdoor%20learning%20areas%20with%20students%20and%20teachers%20utilizing%20the%20improved%20infrastructure%20in%20a%20rural%20setting%20with%20natural%20lighting.&width=800&height=600&seq=1006&orientation=landscape" alt="Infrastructure Development" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<h3 class="text-white font-semibold text-lg mb-2">Infrastructure Development</h3>
+<p class="text-gray-200 text-sm">Building better learning environments</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Get Involved Section -->
+<section class="py-16 md:py-24 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get Involved</h2>
+<p class="text-lg text-gray-700 max-w-3xl mx-auto">Join our mission to make quality education accessible to all. There are many ways you can contribute.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Option 1 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-heart-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Donate</h3>
+<p class="text-gray-700 mb-4">Your financial contribution helps fund scholarships, school supplies, and infrastructure improvements.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Donate Now</button>
+</div>
+<!-- Option 2 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-user-heart-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Volunteer</h3>
+<p class="text-gray-700 mb-4">Share your skills and time as a teacher, mentor, or program coordinator in our educational initiatives.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Apply to Volunteer</button>
+</div>
+<!-- Option 3 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-team-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Partner With Us</h3>
+<p class="text-gray-700 mb-4">Collaborate with us as an organization, business, or institution to create greater educational impact.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Become a Partner</button>
+</div>
+<!-- Option 4 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-building-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Corporate Sponsorship</h3>
+<p class="text-gray-700 mb-4">Support specific programs or initiatives as a corporate sponsor, making a lasting difference in education.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Sponsor a Program</button>
+</div>
+<!-- Option 5 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-funds-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Fundraising</h3>
+<p class="text-gray-700 mb-4">Organize or participate in fundraising events to support our educational initiatives and programs.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Start Fundraising</button>
+</div>
+<!-- Option 6 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-megaphone-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Become an Ambassador</h3>
+<p class="text-gray-700 mb-4">Help spread our message and mission as an official ambassador for educational access and equality.</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full">Join as Ambassador</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-16 md:py-24 bg-primary/5">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+<p class="text-lg text-gray-700 mb-8">Subscribe to our newsletter to receive updates on our programs, success stories, and opportunities to get involved.</p>
+<form class="flex flex-col sm:flex-row gap-4 mb-6">
+<input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-button border-none shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-gray-700">
+<button type="submit" class="bg-primary text-white px-6 py-3 rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Subscribe</button>
+</form>
+<div class="flex items-center justify-center">
+<label class="custom-checkbox text-gray-700">
+<input type="checkbox">
+<span class="checkmark"></span>
+I agree to receive updates from NOVA NGO
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+<p class="text-lg text-gray-700 max-w-3xl mx-auto">Have questions or want to learn more about our programs? We'd love to hear from you.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Contact Form -->
+<div class="bg-white p-8 rounded-lg shadow-md">
+<h3 class="text-2xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="name" class="block text-gray-700 mb-2">Full Name</label>
+<input type="text" id="name" class="w-full px-4 py-3 rounded border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
+</div>
+<div>
+<label for="email" class="block text-gray-700 mb-2">Email Address</label>
+<input type="email" id="email" class="w-full px-4 py-3 rounded border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
+</div>
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-gray-700 mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-3 rounded border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 mb-2">Message</label>
+<textarea id="message" rows="5" class="w-full px-4 py-3 rounded border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 rounded-button whitespace-nowrap hover:bg-opacity-90 transition w-full md:w-auto">Send Message</button>
+</form>
+</div>
+<!-- Contact Information -->
+<div>
+<div class="bg-white p-8 rounded-lg shadow-md mb-8">
+<h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Main Office</h4>
+<p class="text-gray-700">123 Education Street, Nairobi, Kenya</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Phone</h4>
+<p class="text-gray-700">+254 123 456 789</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Email</h4>
+<p class="text-gray-700">info@novango.org</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+<i class="ri-time-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Office Hours</h4>
+<p class="text-gray-700">Monday - Friday: 8:30 AM - 5:00 PM</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h4 class="font-medium text-gray-900 mb-4">Connect With Us</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition">
+<i class="ri-facebook-fill text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition">
+<i class="ri-twitter-fill text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition">
+<i class="ri-instagram-fill text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition">
+<i class="ri-linkedin-fill text-primary"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition">
+<i class="ri-youtube-fill text-primary"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Regional Offices</h3>
+<div class="space-y-4">
+<div>
+<h4 class="font-medium text-gray-900">Mombasa Office</h4>
+<p class="text-gray-700">456 Coastal Road, Mombasa, Kenya</p>
+<p class="text-gray-700">+254 987 654 321</p>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Kisumu Office</h4>
+<p class="text-gray-700">789 Lakeside Avenue, Kisumu, Kenya</p>
+<p class="text-gray-700">+254 456 789 123</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Column 1 -->
+<div>
+<div class="flex items-center mb-6">
+<h2 class="text-3xl font-['Pacifico'] text-white mr-2">NOVA</h2>
+<span class="text-lg font-semibold">NGO</span>
+</div>
+<p class="text-gray-400 mb-6">Empowering communities through quality education for all, regardless of background or location.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+<i class="ri-facebook-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+<i class="ri-instagram-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+</div>
+</div>
+<!-- Column 2 -->
+<div>
+<h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Volunteer Form</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Events</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Courses</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Verticals</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+</ul>
+</div>
+<!-- Column 3 -->
+<div>
+<h3 class="text-lg font-semibold mb-6">Programs</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Scholarship Programs</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">School Infrastructure</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Digital Literacy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Adult Education</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Skill Development</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Teacher Training</a></li>
+</ul>
+</div>
+<!-- Column 4 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-gray-300"></i>
+                            </div>
+                            <span class="text-gray-300">2/4 Mariyamman Koil street Thozhuvanthaangal village vanapuram Taluk kallakurichi Dist pin 605 801
+                                Tamilnadu 
+                                India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line text-gray-300"></i>
+                            </div>
+                            <a href="tel:+18005551234" class="text-gray-300 hover:text-white transition-colors">+91 9787302116</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line text-gray-300"></i>
+                            </div>
+                            <a href="mailto:info@novango.org" class="text-gray-300 hover:text-white transition-colors">infonovangokkr@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 NOVA NGO. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Sitemap</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Initialize Impact Chart
+const impactChart = document.getElementById('impactChart');
+if (impactChart) {
+const chart = echarts.init(impactChart);
+const option = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['Students Reached', 'Schools Supported', 'Graduation Rate'],
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '3%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['2020', '2021', '2022', '2023', '2024', '2025'],
+axisLine: {
+lineStyle: {
+color: '#d1d5db'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#d1d5db'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+}
+},
+series: [
+{
+name: 'Students Reached',
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.01)'
+}]
+}
+},
+data: [3200, 5800, 8400, 11200, 13500, 15427]
+},
+{
+name: 'Schools Supported',
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(141, 211, 199, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(141, 211, 199, 0.2)'
+}, {
+offset: 1, color: 'rgba(141, 211, 199, 0.01)'
+}]
+}
+},
+data: [28, 45, 68, 89, 110, 127]
+},
+{
+name: 'Graduation Rate',
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(251, 191, 114, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(251, 191, 114, 0.2)'
+}, {
+offset: 1, color: 'rgba(251, 191, 114, 0.01)'
+}]
+}
+},
+data: [65, 70, 75, 79, 83, 87]
+}
+]
+};
+chart.setOption(option);
+window.addEventListener('resize', function() {
+chart.resize();
+});
+}
+});
+</script>
+</body>
+</html>

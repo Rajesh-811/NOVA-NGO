@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer with NOVA NGO</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4CAF50',secondary:'#8BC34A'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .custom-checkbox input[type="checkbox"] {
+            display: none;
+        }
+        .custom-checkbox .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+            background-color: #4CAF50;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            display: block;
+            margin-bottom: 2px;
+        }
+        .custom-radio input[type="radio"] {
+            display: none;
+        }
+        .custom-radio .radio-mark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .custom-radio input[type="radio"]:checked + .radio-mark:after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: block;
+        }
+        .file-input-label {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .file-input-label input[type="file"] {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .custom-select {
+            position: relative;
+        }
+        .custom-select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .custom-select.active .custom-select-options {
+            display: block;
+        }
+        .custom-select-option {
+            display: flex;
+            align-items: center;
+        }
+        .custom-select-option input[type="checkbox"] {
+            display: none;
+        }
+        .custom-select-option .option-checkmark {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            transition: all 0.2s;
+        }
+        .custom-select-option input[type="checkbox"]:checked + .option-checkmark {
+            background-color: #4CAF50;
+        }
+        .custom-select-option input[type="checkbox"]:checked + .option-checkmark:after {
+            content: '';
+            width: 5px;
+            height: 9px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            display: block;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="relative min-h-screen flex flex-col">
+        <!-- Background with overlay -->
+        <div class="absolute inset-0 z-0 parallax-bg" style="background-image: url('https://readdy.ai/api/search-image?query=A%20beautiful%20landscape%20showing%20volunteers%20working%20together%20in%20a%20lush%20green%20forest%2C%20planting%20trees%20and%20helping%20communities.%20The%20image%20has%20a%20natural%2C%20serene%20atmosphere%20with%20soft%20sunlight%20filtering%20through%20trees.%20Some%20volunteers%20are%20teaching%20children%20while%20others%20are%20providing%20healthcare%20services%20to%20elderly%20people.%20The%20scene%20depicts%20harmony%20between%20nature%20and%20human%20activities%2C%20with%20diverse%20group%20of%20people%20from%20different%20backgrounds%20working%20together%20for%20a%20common%20cause.&width=1920&height=1080&seq=12345&orientation=landscape');"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+        
+        <!-- Header -->
+        <header class="relative z-10 w-full py-6 px-4 md:px-8">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="/index.html"><div class="text-white font-['Pacifico'] text-3xl">NOVA NGO</div></a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="relative z-10 flex-grow flex items-center justify-center py-12 px-4 md:px-8">
+            <div class="w-full max-w-4xl">
+                <!-- Hero Text -->
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Join Us as a Volunteer</h1>
+                    <p class="text-xl text-white opacity-90 max-w-2xl mx-auto">Be a part of meaningful change across our core areas: Forest Conservation, Human Empowerment, Healthcare, and Education.</p>
+                </div>
+                
+                <!-- Form Container -->
+                <div class="bg-white bg-opacity-95 rounded-lg shadow-xl p-6 md:p-8">
+                    <form id="volunteer-form" class="space-y-8">
+                        <!-- Personal Information Section -->
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Personal Information</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                    <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                    <textarea id="address" name="address" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Volunteering Preferences -->
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Volunteering Preferences</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Areas of Interest <span class="text-red-500">*</span></label>
+                                    <div class="custom-select relative w-full">
+                                        <button type="button" id="areas-button" class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded text-left focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent !rounded-button">
+                                            <span id="areas-selected">Select areas (multiple allowed)</span>
+                                            <i class="ri-arrow-down-s-line ri-lg"></i>
+                                        </button>
+                                        <div class="custom-select-options bg-white border border-gray-300 rounded mt-1 shadow-lg">
+                                            <div class="p-2">
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-forest" name="areas" value="Forest Conservation">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-forest">Forest Conservation</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-empowerment" name="areas" value="Human Empowerment">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-empowerment">Human Empowerment</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-healthcare" name="areas" value="Healthcare">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-healthcare">Healthcare</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-education" name="areas" value="Education">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-education">Education</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-event" name="areas" value="Event Management">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-event">Event Management</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-fundraising" name="areas" value="Fundraising">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-fundraising">Fundraising</label>
+                                                </div>
+                                                <div class="custom-select-option p-2 hover:bg-gray-100">
+                                                    <input type="checkbox" id="area-social" name="areas" value="Social Media/Content Writing">
+                                                    <span class="option-checkmark"></span>
+                                                    <label for="area-social">Social Media/Content Writing</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">Availability <span class="text-red-500">*</span></label>
+                                    <div class="flex flex-wrap gap-6">
+                                        <label class="custom-radio flex items-center cursor-pointer">
+                                            <input type="radio" name="availability" value="Weekdays" required>
+                                            <span class="radio-mark mr-2"></span>
+                                            <span>Weekdays</span>
+                                        </label>
+                                        <label class="custom-radio flex items-center cursor-pointer">
+                                            <input type="radio" name="availability" value="Weekends" required>
+                                            <span class="radio-mark mr-2"></span>
+                                            <span>Weekends</span>
+                                        </label>
+                                        <label class="custom-radio flex items-center cursor-pointer">
+                                            <input type="radio" name="availability" value="Flexible" required>
+                                            <span class="radio-mark mr-2"></span>
+                                            <span>Flexible</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skills & Experience -->
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Skills & Experience</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="skills" class="block text-sm font-medium text-gray-700 mb-1">Relevant Skills & Experience</label>
+                                    <textarea id="skills" name="skills" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Please share any skills or experience that could support our mission..."></textarea>
+                                </div>
+                               
+                                <div>
+                                    <label for="motivation" class="block text-sm font-medium text-gray-700 mb-1">Why are you interested in volunteering with us?</label>
+                                    <textarea id="motivation" name="motivation" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us about your motivation to join NOVA NGO..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Information -->
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Additional Information</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="referral" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
+                                    <div class="relative">
+                                        <select id="referral" name="referral" class="w-full px-4 py-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8">
+                                            <option value="">Please select</option>
+                                            <option value="Social Media">Social Media</option>
+                                            <option value="Friend/Family">Friend/Family</option>
+                                            <option value="Website">Website</option>
+                                            <option value="Event">Event</option>
+                                            <option value="News">News</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                            <i class="ri-arrow-down-s-line ri-lg text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="custom-checkbox flex items-start cursor-pointer">
+                                        <input type="checkbox" id="consent" name="consent" required>
+                                        <span class="checkmark mt-0.5 mr-2"></span>
+                                        <span class="text-sm text-gray-700">I consent to NOVA NGO contacting me regarding my volunteer application. I understand that my personal information will be processed in accordance with the <a href="#" class="text-primary hover:underline">Privacy Policy</a>. <span class="text-red-500">*</span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Submission Section -->
+                        <div class="pt-4">
+                            <button type="submit" class="w-full md:w-auto px-8 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all !rounded-button whitespace-nowrap">
+                                Submit Application
+                            </button>
+                            <p class="mt-4 text-sm text-gray-600">For any queries, please contact us at <a href="mailto:volunteer@novango.org" class="text-primary hover:underline">volunteer@novango.org</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="relative z-10 bg-black bg-opacity-80 text-white py-6 px-4 md:px-8">
+            <div class="container mx-auto text-center text-sm">
+                <p>© 2025 NOVA NGO. All rights reserved. | <a href="#" class="hover:text-primary">Privacy Policy</a> | <a href="#" class="hover:text-primary">Terms of Service</a></p>
+            </div>
+        </footer>
+    </div>
+    <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBis8207SmfqjEQhN7JZyGHDBaehacjuUc",
+        authDomain: "sim-system-et.firebaseapp.com",
+        projectId: "sim-system-et",
+        storageBucket: "sim-system-et.firebasestorage.app",
+        messagingSenderId: "639781958727",
+        appId: "1:639781958727:web:7bc86eb4e932ef805e6d62",
+        measurementId: "G-DLEYG84JCD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom select functionality
+            const areasButton = document.getElementById('areas-button');
+            const areasSelected = document.getElementById('areas-selected');
+            const customSelect = areasButton.closest('.custom-select');
+            const checkboxes = customSelect.querySelectorAll('input[type="checkbox"]');
+            
+            areasButton.addEventListener('click', function() {
+                customSelect.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!customSelect.contains(e.target)) {
+                    customSelect.classList.remove('active');
+                }
+            });
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelectedAreas);
+            });
+            
+            function updateSelectedAreas() {
+                const selected = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+                
+                if (selected.length === 0) {
+                    areasSelected.textContent = 'Select areas (multiple allowed)';
+                } else if (selected.length <= 2) {
+                    areasSelected.textContent = selected.join(', ');
+                } else {
+                    areasSelected.textContent = `${selected.length} areas selected`;
+                }
+            }
+            
+            
+            
+            // Form submission
+            const form = document.getElementById('volunteer-form');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
+                        isValid = false;
+                        field.classList.add('border-red-500');
+                        
+                        // Add event listener to remove error styling on input
+                        field.addEventListener('input', function() {
+                            this.classList.remove('border-red-500');
+                        }, { once: true });
+                    }
+                });
+                
+                // Check if at least one area is selected
+                const areasChecked = Array.from(checkboxes).some(cb => cb.checked);
+                if (!areasChecked) {
+                    isValid = false;
+                    areasButton.classList.add('border-red-500');
+                    
+                    // Remove error styling when an area is selected
+                    checkboxes.forEach(cb => {
+                        cb.addEventListener('change', function() {
+                            if (this.checked) {
+                                areasButton.classList.remove('border-red-500');
+                            }
+                        }, { once: true });
+                    });
+                }
+                
+                if (isValid) {
+                    // Simulate form submission
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="ri-loader-4-line ri-spin ri-lg mr-2"></i> Submitting...';
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Create success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6';
+                        successMessage.innerHTML = `
+                            <strong class="font-bold">Thank you for your application!</strong>
+                            <p class="block sm:inline">We've received your volunteer application and will contact you soon.</p>
+                        `;
+                        
+                        // Insert before the form
+                        form.parentNode.insertBefore(successMessage, form);
+                        
+                        // Reset form
+                        form.reset();
+                        areasSelected.textContent = 'Select areas (multiple allowed)';
+                        fileButton.innerHTML = `<i class="ri-upload-line ri-lg mr-2"></i> Upload Resume`;
+                        
+                        // Restore button
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Submit Application';
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

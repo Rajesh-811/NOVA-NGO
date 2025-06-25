@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA NGO - Nurturing Lives, Empowering Communities</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4CAF50',secondary:'#FF9800'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+.counter-value {
+transition: all 0.5s ease;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.stats-section {
+background-color: #f9fafb;
+}
+.program-image {
+height: 400px;
+object-fit: cover;
+object-position: top;
+}
+.cta-section {
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://readdy.ai/api/search-image?query=A%20diverse%20group%20of%20volunteers%20working%20together%20in%20a%20rural%20setting%2C%20planting%20trees%2C%20teaching%20children%2C%20and%20providing%20healthcare%20services.%20The%20image%20shows%20people%20of%20different%20ages%20and%20backgrounds%20united%20in%20their%20mission%20to%20help%20others.%20The%20scene%20is%20bathed%20in%20warm%2C%20golden%20sunlight%20creating%20a%20hopeful%20and%20inspiring%20atmosphere.%20The%20background%20shows%20a%20village%20with%20simple%20houses%20and%20lush%20greenery%2C%20symbolizing%20sustainable%20development%20and%20community%20growth.&width=1600&height=600&seq=2&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm py-4">
+<div class="container mx-auto px-6 flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="text-3xl font-['Pacifico'] text-primary">NOVA NGO</a>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="/Volunteer.html" class="text-gray-700 hover:text-primary transition-colors">Volunteer Form</a>
+<a href="/events.html" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+<a href="/Courses.html" class="text-gray-700 hover:text-primary transition-colors">Courses</a>
+<div class="relative group inline-block">
+  <a href="#" class="text-gray-700 hover:text-primary transition-colors">Verticals</a>
+  <!-- Dropdown -->
+  <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40 z-10">
+    <a href="/verticals/Forest.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Forest</a>
+    <a href="/verticals/Womenempowerment.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Women Empowerment</a>
+    <a href="/verticals/healthcare.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Healthcare</a>
+    <a href="/verticals/Education.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Education</a>
+  </div>
+</div>
+
+<a href="/Contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact Us</a>
+</div>
+<div class="flex items-center space-x-4">
+<!-- <button class="bg-white text-primary border border-primary px-6 py-2 !rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Log In</button> -->
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Donate</button>
+</div>
+<div class="md:hidden w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line text-gray-700 ri-lg"></i>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative w-full min-h-[600px] overflow-hidden">
+<div class="absolute inset-0 w-full h-full">
+<video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://readdy.ai/api/search-image?query=A%20diverse%20group%20of%20volunteers%20working%20together%20in%20a%20rural%20setting%2C%20planting%20trees%2C%20teaching%20children%2C%20and%20providing%20healthcare%20services.%20The%20scene%20shows%20people%20of%20different%20ages%20and%20backgrounds%20united%20in%20their%20mission%20to%20help%20others.%20The%20scene%20is%20bathed%20in%20warm%2C%20golden%20sunlight%20creating%20a%20hopeful%20and%20inspiring%20atmosphere.%20The%20background%20shows%20a%20village%20with%20simple%20houses%20and%20lush%20greenery%2C%20symbolizing%20sustainable%20development%20and%20community%20growth.&width=1920&height=1080&seq=7&orientation=landscape">
+<source src="https://public.readdy.ai/gen_page/hero_video.mp4" type="video/mp4">
+<source src="https://public.readdy.ai/gen_page/hero_video.webm" type="video/webm">
+Your browser does not support the video tag. Please upgrade your browser.
+</video>
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
+</div>
+<div class="container relative mx-auto px-6 py-24 md:py-32 w-full">
+<div class="max-w-2xl text-white">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">NOVA NGO</h1>
+<p class="text-xl md:text-2xl font-light mb-6">Nurturing Lives, Empowering Communities</p>
+<div class="bg-black/30 backdrop-blur-sm p-6 !rounded-lg mb-8">
+<p class="text-lg">We believe that true change begins at the grassroots level. With a strong commitment to rural upliftment, we work passionately across four key areas to create sustainable impact and empower communities.</p>
+</div>
+<button class="bg-primary text-white px-8 py-3 !rounded-button text-lg font-medium hover:bg-primary/90 transition-colors whitespace-nowrap" onclick="window.open('/Volunteer.html')">Join Us</button>
+</div>
+</div>
+</section>
+<!-- Key Areas Grid -->
+<section class="py-20 bg-white">
+ <div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">Our Key Focus Areas</h2>
+<p class="text-gray-600 max-w-3xl mx-auto">Through our integrated approach, we address the most pressing challenges facing rural communities today.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Forest -->
+<div class="bg-white shadow-lg !rounded-lg p-8 transition-transform hover:-translate-y-2 duration-300">
+<div class="w-16 h-16 bg-green-100 !rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-plant-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Forest</h3>
+<p class="text-gray-600 mb-6 text-center">Preserving nature through tree plantation drives, forest restoration, and environmental awareness campaigns.</p>
+<div class="text-center">
+<a href="/verticals/Forest.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<!-- Human Empowerment -->
+<div class="bg-white shadow-lg !rounded-lg p-8 transition-transform hover:-translate-y-2 duration-300">
+<div class="w-16 h-16 bg-orange-100 !rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-user-heart-line text-secondary ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Human Empowerment</h3>
+<p class="text-gray-600 mb-6 text-center">Unlocking potential through skill development, entrepreneurship training, and leadership workshops.</p>
+<div class="text-center">
+<a href="verticals/Womenempowerment.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<!-- Healthcare -->
+<div class="bg-white shadow-lg !rounded-lg p-8 transition-transform hover:-translate-y-2 duration-300">
+<div class="w-16 h-16 bg-blue-100 !rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-heart-pulse-line text-blue-500 ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Healthcare</h3>
+<p class="text-gray-600 mb-6 text-center">Bringing essential medical services to underserved villages through health camps and hygiene education.</p>
+<div class="text-center">
+<a href="verticals/healthcare.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<!-- Education -->
+<div class="bg-white shadow-lg !rounded-lg p-8 transition-transform hover:-translate-y-2 duration-300">
+<div class="w-16 h-16 bg-purple-100 !rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-book-open-line text-purple-500 ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Education</h3>
+<p class="text-gray-600 mb-6 text-center">Creating opportunities through quality learning, scholarships, and promoting digital literacy.</p>
+<div class="text-center">
+<a href="/verticals/Education.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Statistics -->
+<section class="stats-section py-16">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Our Impact</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Lives Impacted -->
+<div class="bg-white shadow-md !rounded-lg p-8 text-center">
+<div class="w-16 h-16 bg-primary/10 !rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="ri-user-heart-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-4xl font-bold text-gray-800 mb-2 counter-value">25,000+</h3>
+<p class="text-gray-600">Lives Impacted</p>
+</div>
+<!-- Villages Reached -->
+<div class="bg-white shadow-md !rounded-lg p-8 text-center">
+<div class="w-16 h-16 bg-secondary/10 !rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="ri-home-heart-line text-secondary ri-2x"></i>
+</div>
+<h3 class="text-4xl font-bold text-gray-800 mb-2 counter-value">120+</h3>
+<p class="text-gray-600">Villages Reached</p>
+</div>
+<!-- Trees Planted -->
+<div class="bg-white shadow-md !rounded-lg p-8 text-center">
+<div class="w-16 h-16 bg-green-100 !rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="ri-plant-line text-green-600 ri-2x"></i>
+</div>
+<h3 class="text-4xl font-bold text-gray-800 mb-2 counter-value">50,000+</h3>
+<p class="text-gray-600">Trees Planted</p>
+</div>
+<!-- Projects Completed -->
+<div class="bg-white shadow-md !rounded-lg p-8 text-center">
+<div class="w-16 h-16 bg-blue-100 !rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="ri-task-line text-blue-600 ri-2x"></i>
+</div>
+<h3 class="text-4xl font-bold text-gray-800 mb-2 counter-value">200+</h3>
+<p class="text-gray-600">Projects Completed</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Program Details Section -->
+<section class="py-20">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-gray-800 mb-16 text-center">Our Programs</h2>
+<!-- Forest Program -->
+<div class="flex flex-col lg:flex-row items-center mb-20">
+<div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
+<img src="https://readdy.ai/api/search-image?query=A%20vibrant%20reforestation%20project%20in%20a%20rural%20area%20with%20volunteers%20planting%20saplings%2C%20surrounded%20by%20lush%20green%20trees.%20The%20scene%20shows%20people%20of%20different%20ages%20working%20together%2C%20with%20some%20teaching%20children%20about%20environmental%20conservation.%20The%20image%20has%20warm%20natural%20lighting%20highlighting%20the%20rich%20soil%20and%20diverse%20plant%20life.%20The%20atmosphere%20conveys%20hope%20and%20environmental%20stewardship%20with%20clear%20blue%20skies%20and%20a%20sense%20of%20community%20engagement%20in%20forest%20conservation.&width=800&height=600&seq=3&orientation=landscape" alt="Forest Conservation Program" class="program-image !rounded-lg shadow-lg w-full">
+</div>
+<div class="w-full lg:w-1/2 lg:pl-8">
+<h3 class="text-2xl font-bold text-gray-800 mb-4">Forest Conservation</h3>
+<p class="text-gray-600 mb-6">Our forest initiatives focus on preserving nature and biodiversity through community-led conservation efforts. We believe that healthy forests are essential for sustainable rural development and climate resilience.</p>
+<ul class="mb-8 space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Community-led tree plantation drives across 50+ villages</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Forest restoration in degraded landscapes</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Environmental awareness workshops for schools and communities</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Sustainable agroforestry training for farmers</span>
+</li>
+</ul>
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Support Forest Initiatives</button>
+</div>
+</div>
+<!-- Human Empowerment Program -->
+<div class="flex flex-col lg:flex-row-reverse items-center mb-20">
+<div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pl-8">
+<img src="https://readdy.ai/api/search-image?query=A%20vibrant%20scene%20of%20rural%20women%20participating%20in%20a%20skill%20development%20workshop%2C%20learning%20crafts%20and%20entrepreneurship%20skills.%20The%20workshop%20is%20taking%20place%20in%20a%20bright%2C%20airy%20community%20center%20with%20natural%20light%20streaming%20in.%20Women%20of%20different%20ages%20are%20engaged%20in%20various%20activities%20like%20weaving%2C%20sewing%2C%20and%20digital%20literacy%20training.%20The%20atmosphere%20is%20collaborative%20and%20empowering%2C%20with%20mentors%20guiding%20participants.%20The%20image%20shows%20genuine%20smiles%20and%20concentration%20as%20they%20work%20on%20creating%20products%20that%20will%20help%20them%20achieve%20financial%20independence.&width=800&height=600&seq=4&orientation=landscape" alt="Human Empowerment Program" class="program-image !rounded-lg shadow-lg w-full">
+</div>
+<div class="w-full lg:w-1/2 lg:pr-8">
+<h3 class="text-2xl font-bold text-gray-800 mb-4">Human Empowerment</h3>
+<p class="text-gray-600 mb-6">Through our Human Empowerment programs, we unlock the potential of individuals by offering skill development, entrepreneurship training, and leadership workshops, especially for women and youth in rural communities.</p>
+<ul class="mb-8 space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Women's entrepreneurship and leadership development</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Youth skill-building workshops and vocational training</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Self-help group formation and microfinance support</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Community leadership and governance training</span>
+</li>
+</ul>
+<button class="bg-secondary text-white px-6 py-3 !rounded-button hover:bg-secondary/90 transition-colors whitespace-nowrap" onclick="window.open('verticals/Womenempowerment.html')">Join Empowerment Programs</button>
+</div>
+</div>
+<!-- Healthcare Program -->
+<div class="flex flex-col lg:flex-row items-center mb-20">
+<div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
+<img src="https://readdy.ai/api/search-image?query=A%20rural%20healthcare%20camp%20organized%20in%20a%20remote%20village%2C%20with%20medical%20professionals%20providing%20check-ups%20and%20treatment%20to%20local%20residents.%20The%20scene%20shows%20a%20temporary%20medical%20setup%20with%20doctors%20attending%20to%20patients%20of%20all%20ages%20-%20elderly%20villagers%2C%20mothers%20with%20children%2C%20and%20young%20adults.%20Healthcare%20workers%20are%20conducting%20basic%20health%20screenings%2C%20administering%20vaccines%2C%20and%20providing%20medicine.%20The%20atmosphere%20is%20one%20of%20care%20and%20compassion%2C%20with%20natural%20lighting%20highlighting%20the%20medical%20equipment%20and%20the%20interactions%20between%20healthcare%20providers%20and%20community%20members.%20The%20background%20shows%20simple%20village%20structures%20and%20waiting%20patients.&width=800&height=600&seq=5&orientation=landscape" alt="Healthcare Program" class="program-image !rounded-lg shadow-lg w-full">
+</div>
+<div class="w-full lg:w-1/2 lg:pl-8">
+<h3 class="text-2xl font-bold text-gray-800 mb-4">Healthcare Services</h3>
+<p class="text-gray-600 mb-6">Our Healthcare efforts bring essential medical services to underserved villages, organizing free health camps, promoting hygiene education, and supporting maternal and child healthcare, because we believe that good health should be accessible to all.</p>
+<ul class="mb-8 space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Mobile health clinics serving remote villages</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Maternal and child health programs</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Hygiene and sanitation awareness campaigns</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Training of community health workers</span>
+</li>
+</ul>
+<button class="bg-blue-500 text-white px-6 py-3 !rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Support Healthcare Programs</button>
+</div>
+</div>
+<!-- Education Program -->
+<div class="flex flex-col lg:flex-row-reverse items-center">
+<div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pl-8">
+<img src="https://readdy.ai/api/search-image?query=A%20vibrant%20outdoor%20classroom%20in%20a%20rural%20setting%20where%20a%20dedicated%20teacher%20is%20engaging%20with%20diverse%20group%20of%20children%20of%20various%20ages.%20The%20children%20are%20sitting%20in%20a%20semi-circle%20under%20a%20large%20tree%2C%20with%20notebooks%20and%20learning%20materials.%20Some%20children%20are%20raising%20hands%20to%20answer%20questions%20while%20others%20are%20focused%20on%20writing.%20The%20scene%20shows%20both%20traditional%20learning%20methods%20and%20some%20digital%20devices%20being%20used.%20The%20atmosphere%20is%20joyful%20and%20focused%2C%20with%20natural%20sunlight%20filtering%20through%20tree%20branches%2C%20creating%20a%20warm%2C%20nurturing%20learning%20environment.%20The%20background%20shows%20a%20simple%20school%20building%20and%20rural%20landscape.&width=800&height=600&seq=6&orientation=landscape" alt="Education Program" class="program-image !rounded-lg shadow-lg w-full">
+</div>
+<div class="w-full lg:w-1/2 lg:pr-8">
+<h3 class="text-2xl font-bold text-gray-800 mb-4">Education Initiatives</h3>
+<p class="text-gray-600 mb-6">In Education, we strive to create opportunities by improving access to quality learning, providing scholarships, supporting schools, and encouraging digital literacy among rural children and adults.</p>
+<ul class="mb-8 space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">School infrastructure improvement projects</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Scholarship programs for underprivileged students</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Digital literacy centers in rural communities</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="ml-2 text-gray-700">Teacher training and educational resource development</span>
+</li>
+</ul>
+<button class="bg-purple-500 text-white px-6 py-3 !rounded-button hover:bg-purple-600 transition-colors whitespace-nowrap">Support Education Programs</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action Section -->
+<section class="cta-section py-20 text-white">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of the Change</h2>
+<p class="text-lg max-w-3xl mx-auto mb-10">Join our mission to nurture lives and empower communities. Whether through donations, volunteering, or spreading awareness, your contribution can make a significant difference in the lives of many.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+<button class="bg-primary text-white px-8 py-3 !rounded-button text-lg font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Donate Now</button>
+<button class="bg-white text-gray-800 px-8 py-3 !rounded-button text-lg font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" onclick="window.open('Volunteer.html')">Volunteer With Us</button>
+</div>
+<div class="max-w-md mx-auto bg-white/10 backdrop-blur-sm p-6 !rounded-lg">
+<h3 class="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
+<div class="flex flex-col sm:flex-row gap-3">
+<input type="email" placeholder="Your email address" id="email_sub_body" class="flex-grow px-4 py-3 !rounded-button bg-white/20 backdrop-blur-sm border-none text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50">
+<button class="bg-white text-gray-800 px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap" id="subscribe_body">Subscribe</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- About -->
+<div>
+<h3 class="text-xl font-semibold mb-4">About NOVA NGO</h3>
+<p class="text-gray-400 mb-6">We are dedicated to nurturing lives and empowering communities through sustainable development initiatives in rural areas.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 !rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-facebook-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 !rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 !rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-instagram-line text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 !rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Our Programs</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Impact Stories</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Get Involved</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+</ul>
+</div>
+<!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line text-gray-300"></i>
+                            </div>
+                            <span class="text-gray-300">2/4 Mariyamman Koil street Thozhuvanthaangal village vanapuram Taluk kallakurichi Dist pin 605 801
+                                Tamilnadu 
+                                India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line text-gray-300"></i>
+                            </div>
+                            <a href="tel:+18005551234" class="text-gray-300 hover:text-white transition-colors">+91 9787302116</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line text-gray-300"></i>
+                            </div>
+                            <a href="mailto:info@novango.org" class="text-gray-300 hover:text-white transition-colors">infonovangokkr@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+<!-- Newsletter -->
+<div>
+<h3 class="text-xl font-semibold mb-4">Newsletter</h3>
+<p class="text-gray-400 mb-4">Stay updated with our latest news and events.</p>
+<div class="flex flex-col space-y-3">
+<input type="email" placeholder="Your email address" id="email_sub_foot" class="px-4 py-2 !rounded-button bg-gray-800 border-none text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary">
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap" id="subscribe_foot" >Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 mb-4 md:mb-0">© 2025 NOVA NGO. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-500 hover:text-white transition-colors">Cookie Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Counter animation for impact statistics
+const counterElements = document.querySelectorAll('.counter-value');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+// Simply display the value as it's already in text format
+entry.target.style.opacity = 1;
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.5 });
+counterElements.forEach(el => {
+el.style.opacity = 0;
+observer.observe(el);
+});
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="email.js"></script>
+<script>
+    emailjs.init("QLRPbyhmUi9Qzw8sf"); // Replace with your EmailJS public key
+</script>
+</body>
+</html>
