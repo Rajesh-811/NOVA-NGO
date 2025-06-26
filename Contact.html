@@ -134,6 +134,56 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
+    <div class="alert-success hidden" id="alertBox"></div>
+    <style>
+        .alert-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(71, 141, 71, 0.68); 
+            /* background: rgba(244, 20, 20, 0.68); */
+            border: 1px solid white;
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            animation: slideDown 0.5s ease;
+        }
+        /* Existing slide-in */
+        @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        }
+
+        /* New slide-out */
+        @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+        }
+
+        /* Apply on hide */
+        .slide-out {
+        animation: slideUp 0.4s ease forwards;
+        }
+
+    </style>
+
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -481,11 +531,38 @@
         </div>
     </footer>
     <script src="email.js"></script>
+    <!-- <script src="email.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         emailjs.init("QLRPbyhmUi9Qzw8sf"); // Replace with your EmailJS public key
     </script>
     <script>
+        function alert_sub(alertName,mode){
+            const alertBox = document.getElementById('alertBox');
+            alertBox.innerHTML=alertName;
+            if(mode=="error"){
+                alertBox.style.background="rgba(244, 20, 20, 0.68)";
+            }
+            else if(mode=="warning"){
+                alertBox.style.background="rgba(202, 241, 45, 0.87)";
+            }
+            else if(mode=="success"){
+                alertBox.style.background='rgba(71, 141, 71, 0.68)';
+            }
+            // Show alert
+            alertBox.classList.remove('hidden');
+
+            // Slide out and hide after 3 seconds
+            setTimeout(() => {
+            alertBox.classList.add('slide-out');
+
+            // Remove from DOM or fully hide after animation
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+                alertBox.classList.remove('slide-out');
+            }, 400); // Match slide-out duration
+            }, 6000);
+        }
         document.addEventListener('DOMContentLoaded', function() {
             // Custom Select
             const subjectButton = document.getElementById('subjectButton');
@@ -541,7 +618,7 @@
                 const number = document.getElementById("phone").value;
                 const date = new Date(Date.now())
                 if (!name || !email || !subject || !message || !isChecked) {
-                    alert('Please fill in all required fields and accept the privacy policy.');
+                    alert_sub('Please fill in all required fields and accept the privacy policy.','error');
                     return;
                 }
                 e.preventDefault();
@@ -549,7 +626,7 @@
                 
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(email)) {
-                    alert("❌ Invalid email address.");
+                    alert_sub("❌ Invalid email address.",'error');
                     return;
                 }
 
@@ -564,15 +641,15 @@
 
                 emailjs.send("service_9oip9y9", "template_i70kt1l", params)
                     .then(() => {
-                    alert("✅ Message sent successfully!");
+                    alert_sub("Message sent successfully!",'success');
                     document.getElementById("contactForm").reset();
                     }, (error) => {
                     console.error("Error:", error);
-                    alert("❌ Failed to send message.");
+                    alert_sub("Failed to send message.",'error');
                 });
                 
                 // Form submission logic would go here
-                alert('Thank you for your message! We will get back to you soon.');
+                alert_sub('Thank you for your message! We will get back to you soon.','success');
                 contactForm.reset();
                 selectedSubject.textContent = 'Select a subject';
                 privacyCheckbox.classList.remove('checked');
