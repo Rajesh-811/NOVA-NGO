@@ -41,11 +41,63 @@ background-position: center;
 </style>
 </head>
 <body class="bg-white">
+<div class="alert-success hidden" id="alertBox"></div>
+<input type="hidden" name="source" id="source" value="home">
+<style>
+    .alert-success {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(71, 141, 71, 0.68); 
+        /* background: rgba(244, 20, 20, 0.68); */
+        border: 1px solid white;
+        backdrop-filter: blur(10px);
+        padding: 16px 24px;
+        color: white;
+        font-weight: 600;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        animation: slideDown 0.5s ease;
+    }
+    /* Existing slide-in */
+    @keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    }
+
+    /* New slide-out */
+    @keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    }
+
+    /* Apply on hide */
+    .slide-out {
+    animation: slideUp 0.4s ease forwards;
+    }
+
+</style>
+
+
 <!-- Navigation -->
 <nav class="bg-white shadow-sm py-4">
 <div class="container mx-auto px-6 flex items-center justify-between">
 <div class="flex items-center">
-<a href="#" class="text-3xl font-['Pacifico'] text-primary">NOVA NGO</a>
+<a href="https://www.novango.org" class="text-3xl font-['Pacifico'] text-primary">NOVA NGO</a>
 </div>
 <div class="hidden md:flex items-center space-x-8">
 <a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
@@ -111,7 +163,7 @@ Your browser does not support the video tag. Please upgrade your browser.
 <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Forest</h3>
 <p class="text-gray-600 mb-6 text-center">Preserving nature through tree plantation drives, forest restoration, and environmental awareness campaigns.</p>
 <div class="text-center">
-<a href="/verticals/Forest.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
+<a href="verticals/Forest.html" class="text-primary font-medium hover:text-primary/80 inline-flex items-center">
 Learn More
 <i class="ri-arrow-right-line ml-2"></i>
 </a>
