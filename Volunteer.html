@@ -69,19 +69,8 @@
             border-radius: 50%;
             display: block;
         }
-        .file-input-label {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-        .file-input-label input[type="file"] {
-            position: absolute;
-            font-size: 100px;
-            right: 0;
-            top: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
+        
+        
         .custom-select {
             position: relative;
         }
@@ -122,7 +111,7 @@
         .custom-select-option input[type="checkbox"]:checked + .option-checkmark:after {
             content: '';
             width: 5px;
-            height: 9px;
+            height: 6px;
             border: solid white;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
@@ -350,6 +339,7 @@
     const app = initializeApp(firebaseConfig);
     </script>
     <script>
+        var selected;
         document.addEventListener('DOMContentLoaded', function() {
             // Custom select functionality
             const areasButton = document.getElementById('areas-button');
@@ -372,19 +362,21 @@
             });
             
             function updateSelectedAreas() {
-                const selected = Array.from(checkboxes)
+                selected = Array.from(checkboxes)
                     .filter(cb => cb.checked)
                     .map(cb => cb.value);
                 
                 if (selected.length === 0) {
                     areasSelected.textContent = 'Select areas (multiple allowed)';
                 } else if (selected.length <= 2) {
-                    areasSelected.textContent = selected.join(', ');
+                    areasSelected.textContent = selected.join(',');
+                    
                 } else {
                     areasSelected.textContent = `${selected.length} areas selected`;
+                    
                 }
             }
-            
+            console.log(selected)
             
             
             // Form submission
@@ -431,6 +423,41 @@
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="ri-loader-4-line ri-spin ri-lg mr-2"></i> Submitting...';
                     
+                    const d=new Date();
+                    const data = {
+                        name:form.fullName.value,
+                        email:form.email.value,
+                        phone:form.phone.value,
+                        dob:form.dob.value,
+                        address:form.address.value,
+                        interest:selected.toString(),
+                        availability:form.availability.value,
+                        skills:form.skills.value,
+                        motivation:form.motivation.value,
+                        referral:form.referral.value,
+                        date:d.toLocaleDateString('en-GB').replace(/\//g,'-')
+                    }
+                    //url
+                    const url="https://script.google.com/macros/s/AKfycbzZ4pVFyOr1Ej0unOqHm_BGuFzdUe34ZJQlUewCr6CFmFGzk42sHlAaVVtj-NkeakP6WQ/exec";
+                    
+
+                    fetch(url, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data)
+                    })
+                    .then((e) => {
+                        alert("✅ Submitted successfully"+e);
+                        form.reset();
+                    })
+                    .catch((e) => {
+                        alert("❌ Submission failed"+e);
+                    });
+
+
+                    
+
                     // Simulate API call
                     setTimeout(() => {
                         // Create success message
@@ -447,7 +474,6 @@
                         // Reset form
                         form.reset();
                         areasSelected.textContent = 'Select areas (multiple allowed)';
-                        fileButton.innerHTML = `<i class="ri-upload-line ri-lg mr-2"></i> Upload Resume`;
                         
                         // Restore button
                         submitButton.disabled = false;
