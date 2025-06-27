@@ -447,8 +447,8 @@
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
                     })
-                    .then((e) => {
-                        alert("✅ Submitted successfully"+e);
+                    .then(() => {
+                        alert("✅ Submitted successfully");
                         form.reset();
                     })
                     .catch((e) => {
